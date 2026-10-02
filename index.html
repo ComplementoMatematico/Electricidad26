@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de Física: Electricidad · PAES 2027</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  --ink:#141414; --paper:#fff; --desk:#e9e6df; --gold:#e6b84f; --gold-d:#b98f2e; --gold-bg:#fcf6e8;
+  --demre:#64003c; --demre-bg:#f6eef2; --azul:#1e50b4; --verde:#148c5a; --rojo:#be2828; --morado:#7828a0;
+  --vec:#1e9682; --muted:#666; --line:#141414;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:KaTeX_Main,"Latin Modern Roman","Computer Modern Serif","Times New Roman",serif;font-size:15.5px;line-height:1.42}
+.sans{font-family:"Helvetica Neue",Arial,system-ui,sans-serif}
+b,strong{font-weight:700}
+/* ---- barra superior ---- */
+.topbar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #ccc;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px}
+.topbar .in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:6px 12px;overflow-x:auto;white-space:nowrap}
+.topbar a{color:var(--ink);text-decoration:none;padding:4px 8px;border-radius:4px}
+.topbar a:hover{background:var(--gold-bg)}
+.topbar .sep{color:#bbb}
+.score{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:600}
+.score .track{width:90px;height:7px;background:#eee;border-radius:4px;overflow:hidden}
+.score .track i{display:block;height:100%;background:var(--verde)}
+/* ---- hojas ---- */
+.hoja{max-width:1000px;margin:22px auto;background:var(--paper);box-shadow:0 2px 10px rgba(0,0,0,.12);padding:26px 34px 18px;position:relative}
+.hoja .pg{position:absolute;right:20px;bottom:8px;font-size:13px}
+.bloque{text-align:center;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:15px;letter-spacing:.2px;margin:0 0 12px}
+.nota{background:var(--gold-bg);border:1.2px solid var(--gold-d);padding:10px 14px;margin:8px 0 18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;margin-bottom:22px}
+.full{margin-bottom:22px}
+.caja{position:relative;border:1.1px solid var(--line);padding:22px 12px 12px;background:#fff}
+.badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:25px;height:25px;border:1.2px solid var(--line);border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px}
+.caja h4{margin:0 0 6px;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.caja p{margin:5px 0}
+.box{display:inline-block;border:1px solid var(--ink);padding:2px 6px}
+.flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.flex>.grow{flex:1;min-width:170px}
+.c{text-align:center}
+.small{font-size:13px;color:#333}
+.tiny{font-size:12px;color:#444}
+table.tb{border-collapse:collapse;width:100%;margin:6px 0;font-size:14.5px}
+table.tb th,table.tb td{border:1px solid var(--ink);padding:3px 7px;vertical-align:top;text-align:left}
+table.tb th{font-weight:700}
+table.tb.mini{font-size:13.5px}
+table.tb.mini td,table.tb.mini th{padding:2px 6px}
+.plain td{padding:2px 8px 2px 0;vertical-align:top}
+.plain td:first-child{font-weight:700;white-space:nowrap}
+.rojo{color:var(--rojo)}.azul{color:var(--azul)}.verde{color:var(--verde)}
+/* ---- encabezado ---- */
+.head{display:grid;grid-template-columns:140px 1fr 130px;align-items:center;gap:10px}
+.logo{width:120px;height:90px;display:flex;align-items:center;justify-content:center;font:700 26px "Helvetica Neue",Arial,sans-serif}
+.logo img{max-width:120px;max-height:100px}
+.head h1{font-size:25px;margin:0;font-weight:700}
+.head .sub{font-size:15px}
+#qr{width:112px;height:112px;justify-self:end}
+#qr canvas{display:none!important}#qr img{display:block}
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0;position:relative}
+.hoja{overflow:hidden}
+a[href^=mailto]{word-break:break-all}
+.titulo{text-align:center;font-size:19px;font-weight:700;text-decoration:underline;margin:16px 0 12px;text-transform:uppercase}
+.ficha{width:100%;border-collapse:collapse;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px}
+.ficha td{border:1px solid var(--ink);padding:4px 7px}
+.ficha input{width:100%;border:0;font:inherit;background:transparent}
+.ficha ol{margin:2px 0;padding-left:18px;font-weight:700}
+.resumen{background:var(--gold-bg);border:1.4px solid var(--gold-d);padding:8px 12px;margin:14px 0}
+.resumen table{width:100%;border-collapse:collapse;font-size:14px}
+.resumen th{text-align:left;border-bottom:1px solid var(--ink);padding:3px 6px}
+.resumen td{padding:3px 6px;vertical-align:top}
+.resumen td:first-child{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:13px}
+/* ---- widgets ---- */
+.wid{background:#f7f9fd;border:1px dashed #8ea3cf;padding:9px 10px;margin-top:9px}
+.wid .wt{font:700 12px "Helvetica Neue",Arial,sans-serif;color:var(--azul);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.wid label{display:flex;align-items:center;gap:8px;font-size:14px;margin:3px 0}
+.wid input[type=range]{flex:1;accent-color:var(--azul)}
+.wid .val{min-width:58px;text-align:right;font-weight:700;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px}
+.wid select,.wid input[type=number]{font:inherit;font-size:14px;padding:2px 4px;border:1px solid #999;border-radius:3px;background:#fff}
+.wid input[type=number]{width:70px}
+.bar{height:9px;background:#e7e7e7;border-radius:5px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--rojo));border-radius:5px;transition:width .25s}
+.gauge{height:14px;background:#eee;border-radius:7px;overflow:hidden;margin:4px 0 6px}
+.gauge i{display:block;height:100%;transition:width .25s}.gauge .ok{background:var(--verde)}.gauge .warn{background:var(--gold)}.gauge .bad{background:var(--rojo)}
+.txt-bad{color:var(--rojo)}.txt-ok{color:var(--verde)}
+.seg{display:inline-flex;border:1px solid var(--azul);border-radius:5px;overflow:hidden;margin-bottom:5px}
+.seg button{border:0;background:#fff;padding:4px 12px;font:600 13px "Helvetica Neue",Arial,sans-serif;color:var(--azul);cursor:pointer}
+.seg button.on{background:var(--azul);color:#fff}
+.meters{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0}
+.meter{border:1px solid #333;border-radius:6px;padding:3px 10px;background:#111;color:#7dffa0;font-family:"Courier New",monospace;font-size:14px;display:flex;gap:8px}
+.meter span{color:#fff}
+.chk{display:inline-flex!important;width:48%;min-width:180px}
+.cfrow{display:flex;align-items:center;gap:10px;border-bottom:1px dotted #bbb;padding:4px 0}
+.cfsvg{width:130px}.cfinfo{flex:1;font-size:14px}
+.cl-it{border-bottom:1px dotted #bbb;padding:6px 0}
+.cl-op{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chip{border:1px solid #999;background:#fff;border-radius:12px;padding:2px 10px;font:12.5px "Helvetica Neue",Arial,sans-serif;cursor:pointer}
+.chip.good{background:#dff3e8;border-color:var(--verde);color:var(--verde);font-weight:700}
+.chip.bad{background:#fbe3e3;border-color:var(--rojo);color:var(--rojo)}
+.tag-v{color:var(--verde);font-weight:700}
+/* ---- svg ---- */
+.ckt{max-width:100%;height:auto}
+.ckt line,.ckt polyline{stroke:#111;stroke-width:1.6;stroke-linecap:round}
+.ck-dot{fill:#111}
+.ck-lamp{stroke:#111;stroke-width:1.6}
+.ck-glow{fill:#ffd23c;filter:blur(3px)}
+.ck-lab{font:13px KaTeX_Main,serif;fill:#111}
+.ck-m{font:700 11.5px "Helvetica Neue",Arial,sans-serif;fill:#111}
+.ck-x{fill:var(--rojo);font-size:13px}
+.ckt circle[r="10"]{stroke:#111;stroke-width:1.6}
+.plt{max-width:100%;height:auto}
+.plt .ax{stroke:#222;stroke-width:1.2}.plt .tk{font:11.5px KaTeX_Main,serif;fill:#222}.plt .dsh{stroke:#888;stroke-dasharray:3 3}
+/* ---- ejercicios ---- */
+.hab{text-align:right;margin:-8px -4px 6px}
+.habtag{display:inline-block;border:1px solid var(--demre);background:var(--demre-bg);color:var(--demre);font:700 10.5px "Helvetica Neue",Arial,sans-serif;padding:1px 6px}
+.qrow{display:flex;gap:10px;align-items:flex-start}
+.qstem{flex:1}
+.qfig{flex:0 0 auto;max-width:52%}
+.qstem table{border-collapse:collapse;margin:6px auto;font-size:14px}
+.qstem table td{border:1px solid var(--ink);padding:2px 7px;text-align:center}
+table.afirm td{padding:1px 6px 1px 0;vertical-align:top}
+.alts{display:grid;grid-template-columns:1fr;gap:5px;margin-top:8px}
+.alts.two{grid-template-columns:1fr 1fr}
+.alt{display:flex;gap:8px;align-items:flex-start;text-align:left;background:#fff;border:1px solid #c9c9c9;border-radius:5px;padding:5px 8px;font:inherit;font-size:14.5px;cursor:pointer;color:inherit}
+.alt:hover{border-color:var(--azul);background:#f5f8ff}
+.alt b{min-width:20px}
+.alt.good{border-color:var(--verde);background:#e2f4ea}
+.alt.bad{border-color:var(--rojo);background:#fbe5e5}
+.cfgalts{grid-template-columns:1fr 1fr}
+.cfgalts .alt{align-items:center}
+.fb{margin-top:7px;font-size:14px;padding:0}
+.fb.ok{color:#0f6b44;background:#e8f6ee;padding:6px 9px;border-left:3px solid var(--verde)}
+.fb.no{color:#8c1c1c;background:#fcecec;padding:6px 9px;border-left:3px solid var(--rojo)}
+.btn{font:600 13px "Helvetica Neue",Arial,sans-serif;background:var(--demre);color:#fff;border:0;border-radius:4px;padding:6px 12px;cursor:pointer;margin-top:8px}
+.btn:hover{filter:brightness(1.15)}
+.btn.sm{padding:4px 10px;font-size:12.5px}
+.btn.ghost{background:#fff;color:var(--demre);border:1px solid var(--demre)}
+.btn:disabled{opacity:.45;cursor:default}
+.sol{margin-top:8px;border-top:1px dashed #aaa;padding-top:6px}
+.steps{list-style:none;padding:0;margin:0}
+.steps li{display:flex;gap:9px;align-items:flex-start;margin:6px 0;font-size:14.5px}
+.steps li.new{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1}}
+.sn{flex:0 0 22px;height:22px;border-radius:50%;background:var(--gold);color:#3b2c00;display:flex;align-items:center;justify-content:center;font:700 12px "Helvetica Neue",Arial,sans-serif}
+.stp-btns{display:flex;gap:6px;flex-wrap:wrap}
+.ejemplo .ealt{display:inline-block;border:1px solid #bbb;border-radius:4px;padding:2px 8px;margin:2px 4px 2px 0;background:#fff;cursor:pointer;font:inherit;font-size:14px}
+.ejemplo .ealt.good{background:#e2f4ea;border-color:var(--verde)}.ejemplo .ealt.bad{background:#fbe5e5;border-color:var(--rojo)}
+.ealts-l .ealt{display:block;width:100%;text-align:left;margin:3px 0}
+/* ---- pauta ---- */
+#spec td,#spec th{border:1px solid var(--ink);padding:4px 7px}
+#spec{border-collapse:collapse;width:100%;font-size:14px}
+#spec a{display:inline-block;min-width:22px;text-align:center;border-radius:3px;text-decoration:none;color:inherit;margin:1px}
+#spec a.qok{background:#cdebd9}#spec a.qno{background:#f5cccc}
+.spec-box{background:var(--demre-bg);border:1.4px solid var(--demre);padding:10px 12px;margin:10px 0}
+.cierre{background:#e6f4f1;border:1.4px solid var(--vec);padding:10px 12px;margin:14px 0}
+#clave{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:4px;margin:8px 0;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px}
+#clave span{border:1px solid #ccc;padding:2px 5px;border-radius:3px}
+#clave[hidden]{display:none}
+#clave a{font-weight:700;color:var(--demre)}
+.fin{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;text-align:center;margin:20px 0 6px}
+@media (max-width:760px){
+  body{font-size:15px}
+  .hoja{padding:20px 14px 26px;margin:12px 0}
+  .grid2{grid-template-columns:1fr}
+  .head{grid-template-columns:70px 1fr}
+  #qr{display:none}
+  .logo{width:64px;height:60px;font-size:18px}.logo img{max-width:64px}
+  .head h1{font-size:19px}
+  .qrow{flex-direction:column}.qfig{max-width:100%;align-self:center}
+  .alts.two,.cfgalts{grid-template-columns:1fr}
+  .chk{width:100%}
+  .ficha tr,.ficha td{display:block;width:auto!important}
+  .ficha td{border-bottom:0}.ficha tr:last-child td:last-child{border-bottom:1px solid var(--ink)}
+  .resumen table,.resumen tbody,.resumen tr,.resumen td{display:block}
+  .resumen tr{border-bottom:1px solid #d9c38a;padding:4px 0}.resumen th{display:none}
+  table.tb{font-size:13px}
+  .scroll{overflow-x:auto}
+}
+@media print{
+  .topbar,.btn,.wid,.stp-btns{display:none!important}
+  body{background:#fff}.hoja{box-shadow:none;margin:0;page-break-after:always}
+  .sol[hidden]{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="in">
+  <a href="#inicio">Inicio</a><span class="sep">·</span>
+  <a href="#t-ohm">Ohm</a><a href="#t-circ">Circuitos</a><a href="#t-kirch">Kirchhoff</a><a href="#t-pot">Potencia</a><a href="#t-casa">Instalación</a><a href="#t-hab">Habilidades</a><a href="#t-ej">Ejemplos</a><span class="sep">·</span>
+  <a href="#ejercitacion">Ejercitación</a><a href="#pauta">Pauta</a>
+  <div class="score"><span>Aciertos: <span id="sc-ok">0</span>/<span id="sc-ans">0</span></span><div class="track"><i id="sc-bar"></i></div></div>
+</div></nav>
+
+<!-- =================================================================== PÁGINA 1 -->
+<section class="hoja" id="inicio">
+  <div class="head">
+    <div class="logo"><img src="assets/LogoCM.png" alt="" onerror="this.replaceWith(document.createTextNode('CM'))"></div>
+    <div><h1>Complemento Matemático</h1><div class="sub">Prof. Bastiani Calabrano</div><div class="sub">PAES Admisión 2027 · Competencia Científica · Física</div></div>
+    <div id="qr" data-url="https://complementomatematico.github.io/PAESELEC27/"></div>
+  </div>
+  <div class="titulo">Guía de Física: Electricidad y habilidades de pensamiento científico</div>
+  <table class="ficha"><tr><td style="width:12%"><b>NOMBRE</b></td><td><input aria-label="Nombre"></td><td style="width:9%"><b>CURSO</b></td><td style="width:14%"><input aria-label="Curso"></td><td style="width:9%"><b>FECHA</b></td><td style="width:14%"><input aria-label="Fecha"></td></tr>
+  <tr><td><b>Instrucciones</b></td><td colspan="5"><ol>
+    <li>Estudia la teoría y los ejemplos; luego resuelve la ejercitación tipo PAES. Cada pregunta tiene <b>4 alternativas</b> (A, B, C y D) y solo una es correcta. Al marcar una alternativa sabrás si es correcta, y cada pregunta tiene su <b>resolución paso a paso</b>.</li>
+    <li>Esta guía cubre el área temática <b>Electricidad</b> del temario de Física y las <b>cinco habilidades</b> de la Prueba de Competencia Científica. Cada pregunta indica la habilidad que evalúa. Dudas al correo: <a href="mailto:complemento.matematico.cm@gmail.com">complemento.matematico.cm@gmail.com</a>.</li></ol></td></tr></table>
+
+  <div class="resumen"><table>
+    <tr><th>Magnitud</th><th>Símbolo</th><th>Unidad (SI)</th><th>¿Qué es?</th><th>¿Cómo se mide?</th></tr>
+    <tr><td>Corriente eléctrica</td><td>\(I\)</td><td>ampere (A)</td><td><b>Cantidad de carga que pasa por una sección del conductor cada segundo</b>: \(I=Q/t\).</td><td>Amperímetro, <b>en serie</b>.</td></tr>
+    <tr><td>Voltaje (diferencia de potencial)</td><td>\(V,\ \Delta V\)</td><td>volt (V)</td><td><b>Energía que la fuente entrega a cada coulomb de carga</b>: \(V=E/q\). Es lo que “empuja” la corriente.</td><td>Voltímetro, <b>en paralelo</b>.</td></tr>
+    <tr><td>Resistencia eléctrica</td><td>\(R\)</td><td>ohm (Ω)</td><td><b>Oposición de un material al paso de la corriente</b>: \(R=V/I\).</td><td>Óhmetro (circuito desconectado).</td></tr>
+    <tr><td>Potencia y energía</td><td>\(P,\ E\)</td><td>watt (W), kWh</td><td><b>Potencia</b>: energía transformada cada segundo, \(P=V\cdot I\). <b>Energía</b>: lo que se consume y se paga, \(E=P\cdot t\).</td><td>Medidor de la casa (kWh).</td></tr>
+  </table></div>
+
+  <div class="bloque">── BLOQUE A: CARGA, CORRIENTE Y VOLTAJE ──</div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">1</span><h4>Carga eléctrica.</h4>
+      <div class="flex"><svg width="110" height="100" viewBox="-55 -50 110 100"><g fill="none" stroke="#999" stroke-dasharray="3 3"><ellipse rx="44" ry="19"/><ellipse rx="44" ry="19" transform="rotate(60)"/><ellipse rx="44" ry="19" transform="rotate(-60)"/></g><circle r="8" fill="#d75a5a"/><text y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">+</text><g fill="#c9d6f3" stroke="#1e50b4"><circle cx="44" r="6"/><circle cx="-11" cy="-38" r="6"/><circle cx="-11" cy="38" r="6"/></g></svg>
+      <div class="grow">La materia está formada por átomos con <b>protones</b> (\(+\)), <b>neutrones</b> (sin carga) y <b>electrones</b> (\(-\)).<br><b>Carga elemental:</b> \(e=1{,}6\cdot10^{-19}\un{C}\).<br>Un cuerpo se <b>carga</b> cuando gana o pierde <b>electrones</b> (los protones no se mueven).</div></div>
+      <p><b>Conductores:</b> tienen <b>electrones libres</b> que se mueven con facilidad (cobre, aluminio, plata, grafito). <b>Aislantes:</b> sus electrones están ligados (plástico, goma, vidrio, madera seca).</p>
+      <p><b>Carga de \(n\) electrones:</b> \(Q=n\cdot e\) \(\Rightarrow\) \(1\un{C}\) equivale a \(6{,}25\cdot10^{18}\) electrones.</p>
+    </div>
+    <div class="caja"><span class="badge">2</span><h4>Corriente eléctrica: flujo de cargas.</h4>
+      <p>La <b>corriente</b> es la carga \(Q\) que atraviesa una sección del conductor por unidad de tiempo: \(\ \boxed{I=\dfrac{Q}{t}}\quad 1\un{A}=1\,\dfrac{\mathrm{C}}{\mathrm{s}}\)</p>
+      <p>En los metales se mueven los <b>electrones</b> (polo \(-\to+\)). El <b>sentido convencional</b> va del polo \(+\) al \(-\).</p>
+      <p><b>Ejemplo:</b> \(I=2\un{A}\) durante \(10\un{s}\): \(Q=20\un{C}\); \(n=\dfrac{20}{1{,}6\cdot10^{-19}}=1{,}25\cdot10^{20}\) electrones.</p>
+      <div class="wid" id="w-corriente"><div class="wt">Interactivo · mueve los controles</div>
+        <svg viewBox="0 0 320 64" width="100%" height="64"><rect x="10" y="6" width="300" height="46" fill="#f7e7bd" stroke="#111"/><line x1="160" y1="2" x2="160" y2="56" stroke="#be2828" stroke-dasharray="4 3"/><g id="electrones"></g><text x="160" y="63" text-anchor="middle" font-size="10" fill="#1e50b4">← sentido real de los electrones · sentido convencional →</text></svg>
+        <label>Corriente \(I\) <input type="range" id="ci" min="0.1" max="5" step="0.1" value="2"></label>
+        <label>Tiempo \(t\) (s) <input type="range" id="ct" min="1" max="120" step="1" value="10"></label>
+        <div id="cout" class="small"></div></div>
+    </div>
+    <div class="caja"><span class="badge">3</span><h4>Voltaje o diferencia de potencial.</h4>
+      <div class="flex"><svg width="140" height="90" viewBox="0 0 140 90"><rect x="10" y="10" width="34" height="70" fill="#dfe6f6" stroke="#294b8f"/><rect x="10" y="22" width="34" height="58" fill="#9fb3e0"/><rect x="44" y="64" width="54" height="10" fill="#9fb3e0" stroke="#294b8f"/><rect x="98" y="44" width="34" height="36" fill="#dfe6f6" stroke="#294b8f"/><rect x="98" y="62" width="34" height="18" fill="#9fb3e0"/><text x="70" y="88" font-size="10" text-anchor="middle">el agua fluye →</text></svg>
+      <div class="grow">Así como el agua fluye por una <b>diferencia de altura</b>, las cargas fluyen por una <b>diferencia de potencial</b>. \[\boxed{V=\frac{E}{q}}\qquad 1\un{V}=1\,\frac{\mathrm{J}}{\mathrm{C}}\]</div></div>
+      <p><b>Ejemplo:</b> una pila de \(1{,}5\un{V}\) entrega \(1{,}5\un{J}\) de energía a cada coulomb que pasa por ella.</p>
+      <p><b>Sin diferencia de potencial no hay corriente</b>, aunque el circuito esté cerrado. La fuente <b>no fabrica cargas</b>: les entrega energía.</p>
+    </div>
+    <div class="caja"><span class="badge">4</span><h4>El circuito eléctrico.</h4>
+      <div class="flex"><div class="static-ckt" data-s="48" data-ckt='[["bat",0,0,0,2,"fuente","w"],["sw",0,2,2.6,2,"interruptor","n"],["lamp",2.6,2,2.6,0,"receptor","e"],["w",2.6,0,0,0],["txt",1.3,-0.45,"conductores"]]'></div>
+      <div class="grow"><b>Elementos:</b> fuente, conductores (cables), receptor o carga (ampolleta, motor, resistor) e interruptor.<br><b>Cerrado:</b> hay un camino completo y circula corriente. <b>Abierto:</b> el camino se corta y no circula corriente.</div></div>
+      <p><b>Corriente continua (CC):</b> circula siempre en el <b>mismo sentido</b> (pilas, baterías). <b>Corriente alterna (CA):</b> cambia de sentido periódicamente (red domiciliaria en Chile: \(220\un{V}\), \(50\un{Hz}\)).</p>
+      <p class="tiny">El temario PAES de Electricidad trabaja los circuitos de corriente continua.</p>
+    </div>
+  </div>
+  <span class="pg">1</span>
+</section>
+
+<!-- =================================================================== PÁGINA 2 -->
+<section class="hoja" id="t-ohm">
+  <div class="bloque">TEORÍA · LEY DE OHM Y RESISTENCIA ELÉCTRICA</div>
+  <div class="nota"><b>Ley de Ohm.</b> En un conductor <b>óhmico</b> (a temperatura constante), la corriente \(I\) que lo atraviesa es <b>directamente proporcional</b> al voltaje \(V\) aplicado entre sus extremos. La constante de proporcionalidad es la <b>resistencia</b> \(R\): \(V=I\cdot R\).</div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">5</span><h4>Ley de Ohm.</h4>
+      <div class="flex"><svg width="120" height="100" viewBox="0 0 120 100"><path d="M10,92 L110,92 L60,8 Z" fill="#faefd3" stroke="#111" stroke-width="1.5"/><line x1="35" y1="50" x2="85" y2="50" stroke="#111" stroke-width="1.5"/><line x1="60" y1="50" x2="60" y2="92" stroke="#111" stroke-width="1.5"/><text x="60" y="42" text-anchor="middle" font-size="20" font-style="italic">V</text><text x="42" y="80" text-anchor="middle" font-size="20" font-style="italic">I</text><text x="78" y="80" text-anchor="middle" font-size="20" font-style="italic">R</text></svg>
+      <div class="grow">\[\boxed{V=I\cdot R}\quad I=\frac{V}{R}\quad R=\frac{V}{I}\]\[1\ohm=1\,\frac{\mathrm{V}}{\mathrm{A}}\]<span class="tiny">Tapa la que buscas en el triángulo.</span></div></div>
+      <p><b>Ejemplo:</b> un resistor de \(20\ohm\) se conecta a \(12\un{V}\): \(I=\dfrac{12}{20}=0{,}6\un{A}\).</p>
+      <p><b>Proporcionalidad</b> (\(R\) constante): si \(V\) se duplica, \(I\) se duplica. <b>Con el mismo voltaje</b>, a mayor resistencia, <b>menor</b> corriente.</p>
+      <div class="wid" id="w-ohm"><div class="wt">Interactivo · calculadora de Ohm</div>
+        <label>\(V\) <input type="range" id="ov" min="0" max="24" step="0.5" value="12"><span class="val" id="ovl"></span></label>
+        <label>\(R\) <input type="range" id="or" min="1" max="100" step="1" value="20"><span class="val" id="orl"></span></label>
+        <div id="oout"></div><div class="bar" style="margin-top:4px"><i id="obar"></i></div></div>
+    </div>
+    <div class="caja"><span class="badge">6</span><h4>Gráfico voltaje–corriente.</h4>
+      <p>La <b>pendiente</b> de la recta \(V\) vs \(I\) es la resistencia: \(R=\dfrac{\Delta V}{\Delta I}\). Más inclinada \(\Rightarrow\) mayor \(R\).</p>
+      <p><b>Óhmico:</b> el gráfico es una <b>recta que pasa por el origen</b> (\(R\) constante). <b>No óhmico:</b> el gráfico es una <b>curva</b>; \(R\) cambia. Ej.: el filamento de una ampolleta se calienta y su resistencia <b>aumenta</b>; los diodos y LED tampoco son óhmicos.</p>
+      <p class="tiny">Si el gráfico es \(I\) vs \(V\), la pendiente es \(1/R\): más inclinada \(\Rightarrow\) menor \(R\).</p>
+      <div class="wid" id="w-vi"><div class="wt">Interactivo · cambia la resistencia</div>
+        <div class="c" id="viplot"></div>
+        <label>\(R\) (Ω) <input type="range" id="vir" min="0.5" max="8" step="0.5" value="4"></label>
+        <label><input type="checkbox" id="vilamp"> Mostrar curva de una ampolleta</label>
+        <div id="viout" class="small"></div></div>
+    </div>
+    <div class="caja"><span class="badge">7</span><h4>¿De qué depende la resistencia de un cable?</h4>
+      <p>\[\boxed{R=\rho\,\frac{L}{A}}\qquad \rho:\ \text{resistividad del material }(\Omega\cdot\mathrm{m})\]</p>
+      <table class="tb"><tr><td>Mayor <b>longitud</b> \(L\)</td><td>Mayor \(R\) (proporcional)</td></tr><tr><td>Mayor <b>área</b> (grosor) \(A\)</td><td>Menor \(R\) (inversamente prop.)</td></tr><tr><td><b>Material</b> (\(\rho\))</td><td>Cobre \(1{,}7\cdot10^{-8}\); aluminio \(2{,}8\cdot10^{-8}\); nicromo \(1{,}1\cdot10^{-6}\ \Omega\cdot\)m</td></tr><tr><td>Mayor <b>temperatura</b></td><td>En los metales, mayor \(R\)</td></tr></table>
+      <p><b>Ejemplo:</b> \(100\un{m}\) de cobre de \(1\un{mm^2}\): \(R=1{,}7\cdot10^{-8}\cdot\dfrac{100}{10^{-6}}=1{,}7\ohm\).</p>
+      <div class="wid" id="w-rho"><div class="wt">Interactivo · arma tu cable</div>
+        <label>Material <select id="rm"><option value="1.7e-8">Cobre</option><option value="2.8e-8">Aluminio</option><option value="1e-7">Hierro</option><option value="1.1e-6">Nicromo</option></select>
+        Área <select id="ra"><option>0.5</option><option selected>1</option><option>1.5</option><option>2.5</option><option>4</option></select> mm²</label>
+        <label>Longitud <input type="range" id="rl" min="1" max="200" value="100"><span class="val" id="rll"></span></label>
+        <div id="rout"></div></div>
+    </div>
+    <div class="caja"><span class="badge">8</span><h4>Símbolos de circuitos.</h4>
+      <table class="plain" style="width:100%">
+        <tr><td><div class="static-ckt" data-s="40" data-ckt='[["bat",0,0,1.4,0]]'></div></td><td style="font-weight:400">Pila o batería (raya larga: polo \(+\))</td><td><div class="static-ckt" data-s="40" data-ckt='[["R",0,0,1.4,0]]'></div></td><td style="font-weight:400">Resistor</td></tr>
+        <tr><td><div class="static-ckt" data-s="40" data-ckt='[["lamp",0,0,1.4,0]]'></div></td><td style="font-weight:400">Ampolleta</td><td><div class="static-ckt" data-s="40" data-ckt='[["sw",0,0,1.4,0]]'></div></td><td style="font-weight:400">Interruptor (abierto)</td></tr>
+        <tr><td><div class="static-ckt" data-s="40" data-ckt='[["M",0,0,1.4,0,"","n",{},"A"]]'></div></td><td style="font-weight:400">Amperímetro</td><td><div class="static-ckt" data-s="40" data-ckt='[["M",0,0,1.4,0,"","n",{},"V"]]'></div></td><td style="font-weight:400">Voltímetro</td></tr>
+        <tr><td><div class="static-ckt" data-s="40" data-ckt='[["w",0,0,1.4,0],["dot",0.7,0],["w",0.7,0,0.7,0.5]]'></div></td><td style="font-weight:400">Nodo (unión de cables)</td><td><div class="static-ckt" data-s="40" data-ckt='[["M",0,0,1.4,0,"","n",{},"Ω"]]'></div></td><td style="font-weight:400">Óhmetro</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">9</span><h4>¿Cómo se conectan los instrumentos de medición?</h4>
+    <div class="flex"><div class="static-ckt" data-s="44" data-ckt='[["bat",0,0,0,2.4,"12 V","w"],["M",0,2.4,2.6,2.4,"","n",{},"A"],["w",2.6,2.4,3.4,2.4],["R",3.4,2.4,3.4,0,"R","w"],["w",3.4,0,0,0],["w",3.4,2.4,4.8,2.4],["M",4.8,2.4,4.8,0,"","n",{},"V"],["w",4.8,0,3.4,0],["dot",3.4,2.4],["dot",3.4,0]]'></div>
+    <div class="grow scroll"><table class="tb"><tr><th>Instrumento</th><th>Conexión</th><th>¿Por qué?</th></tr>
+      <tr><td>Amperímetro</td><td>En <b>serie</b> (se “corta” el circuito y se intercala)</td><td>Toda la corriente debe pasar por él. Su resistencia es casi <b>cero</b> para no alterar el circuito.</td></tr>
+      <tr><td>Voltímetro</td><td>En <b>paralelo</b> con el elemento (a sus extremos)</td><td>Compara el potencial entre dos puntos. Su resistencia es <b>muy grande</b>: casi no le pasa corriente.</td></tr>
+      <tr><td>Óhmetro</td><td>Con el elemento <b>desconectado</b> de la fuente</td><td>Usa su propia pila para medir \(R\).</td></tr></table></div></div>
+  </div>
+  <div class="caja full"><span class="badge">★</span><h4>Razonar con proporciones (sin números).</h4>
+    <p>Muchas preguntas PAES preguntan “¿qué pasa si…?”. Usa \(V=I\cdot R\) y fija lo que no cambia.</p>
+    <div class="scroll"><table class="tb"><tr><th>Se mantiene constante</th><th>Cambio</th><th>Efecto</th></tr>
+      <tr><td>La resistencia \(R\)</td><td>\(V\) se triplica</td><td>\(I=V/R\) se <b>triplica</b> (directamente proporcionales).</td></tr>
+      <tr><td>El voltaje \(V\)</td><td>\(R\) se duplica</td><td>\(I=V/R\) se reduce a la <b>mitad</b> (inversamente proporcionales).</td></tr>
+      <tr><td>La corriente \(I\) (serie)</td><td>\(R\) es 3 veces mayor</td><td>\(V=I\cdot R\) es 3 veces mayor en ese elemento.</td></tr>
+      <tr><td>El material y el área</td><td>La longitud se duplica</td><td>\(R=\rho L/A\) se <b>duplica</b>; con el mismo \(V\), la corriente se reduce a la mitad.</td></tr>
+      <tr><td>El material y la longitud</td><td>El diámetro se duplica</td><td>El área (\(\pi r^2\)) se <b>cuadruplica</b>: \(R\) se reduce a la <b>cuarta parte</b>.</td></tr></table></div>
+  </div>
+  <span class="pg">2</span>
+</section>
+
+<!-- =================================================================== PÁGINA 3 -->
+<section class="hoja" id="t-circ">
+  <div class="bloque">TEORÍA · CIRCUITOS EN SERIE, EN PARALELO Y MIXTOS</div>
+  <div class="nota"><b>Resistencia equivalente \(R_{eq}\).</b> Es la única resistencia que, conectada a la misma fuente, haría circular la <b>misma corriente total</b>. Con ella se calcula la corriente que entrega la fuente: \(I_T=V/R_{eq}\). Luego se “devuelve” al circuito original con la ley de Ohm.</div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">10</span><h4>Circuito en serie.</h4>
+      <div class="c static-ckt" data-s="46" data-ckt='[["bat",0,0,0,2.2,"12 V","w"],["R",0,2.2,3,2.2,"R₁=2 Ω","n"],["R",3,2.2,3,0,"R₂=4 Ω","e"],["w",3,0,0,0]]'></div>
+      <p>• La <b>corriente es la misma</b> en todos: \(I=I_1=I_2\).<br>• El <b>voltaje se reparte</b>: \(V=V_1+V_2\).<br>• La resistencia equivalente <b>aumenta</b>: \(\boxed{R_{eq}=R_1+R_2+\dots}\)</p>
+      <p><b>Ejemplo:</b> \(R_{eq}=2+4=6\ohm\); \(I=\dfrac{12}{6}=2\un{A}\); \(V_1=4\un{V}\); \(V_2=8\un{V}\). Comprobación: \(4+8=12\un{V}\) ✓</p>
+      <p><b>Ojo:</b> la resistencia <b>mayor</b> recibe <b>más voltaje</b>. Si un elemento se quema o se abre el circuito, <b>todos se apagan</b>.</p>
+    </div>
+    <div class="caja"><span class="badge">11</span><h4>Circuito en paralelo.</h4>
+      <div class="c static-ckt" data-s="46" data-ckt='[["bat",0,0,0,2.2,"12 V","w"],["w",0,2.2,2,2.2],["R",2,2.2,2,0,"R₁=4 Ω","e"],["w",2,0,0,0],["w",2,2.2,4,2.2],["R",4,2.2,4,0,"R₂=12 Ω","e"],["w",4,0,2,0],["dot",2,2.2],["dot",2,0]]'></div>
+      <p>• El <b>voltaje es el mismo</b> en cada rama: \(V=V_1=V_2\).<br>• La <b>corriente se reparte</b>: \(I=I_1+I_2\).<br>• \(\boxed{\dfrac{1}{R_{eq}}=\dfrac{1}{R_1}+\dfrac{1}{R_2}+\dots}\) Para <b>dos</b>: \(R_{eq}=\dfrac{R_1R_2}{R_1+R_2}\), <b>menor que la menor</b>.</p>
+      <p><b>Ejemplo:</b> \(R_{eq}=\dfrac{4\cdot12}{16}=3\ohm\); \(I_1=3\un{A}\); \(I_2=1\un{A}\); \(I=4\un{A}=\dfrac{12}{3}\) ✓</p>
+      <p>Por la resistencia <b>menor</b> pasa <b>más corriente</b>. Si una rama se abre, las demás <b>siguen funcionando</b>.</p>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">★</span><h4>Simulador: serie vs paralelo.</h4>
+    <div class="wid" id="w-sp" style="margin-top:0"><div class="wt">Interactivo · las ampolletas brillan según su potencia</div>
+      <div class="seg"><button class="on" data-m="serie">Serie</button><button data-m="paralelo">Paralelo</button></div>
+      <div class="flex"><div id="spfig" class="c" style="min-width:260px"></div>
+      <div class="grow"><label>\(V\) <input type="range" id="spv" min="1" max="24" value="12"><span class="val" data-for="spv"></span></label>
+      <label>\(R_1\) <input type="range" id="sp1" min="1" max="20" value="2"><span class="val" data-for="sp1"></span></label>
+      <label>\(R_2\) <input type="range" id="sp2" min="1" max="20" value="4"><span class="val" data-for="sp2"></span></label>
+      <div id="sptab"></div></div></div></div>
+  </div>
+  <div class="caja full"><span class="badge">12</span><h4>Circuito mixto: ejemplo paso a paso.</h4>
+    <div class="flex"><div class="static-ckt" data-s="46" data-ckt='[["bat",0,0,0,2.6,"18 V","w"],["R",0,2.6,2.4,2.6,"R₁=4 Ω","n"],["w",2.4,2.6,2.6,2.6],["R",2.6,2.6,2.6,0,"R₂=6 Ω","w"],["w",2.6,0,0,0],["w",2.6,2.6,4.2,2.6],["R",4.2,2.6,4.2,0,"R₃=3 Ω","e"],["w",4.2,0,2.6,0],["dot",2.6,2.6],["dot",2.6,0]]'></div>
+    <div class="grow mini-stepper" data-steps='["<b>1. Reducir el paralelo.</b> \\(R_{23}=\\dfrac{6\\cdot3}{6+3}=2\\ohm\\)","<b>2. Sumar en serie.</b> \\(R_{eq}=R_1+R_{23}=4+2=6\\ohm\\)","<b>3. Corriente total.</b> \\(I_T=\\dfrac{18}{6}=3\\un{A}\\) (pasa completa por \\(R_1\\))","<b>4. Voltajes.</b> \\(V_1=3\\cdot4=12\\un{V}\\); \\(V_{23}=3\\cdot2=6\\un{V}\\) (\\(12+6=18\\) ✓)","<b>5. Corrientes en ramas.</b> \\(I_2=\\dfrac{6}{6}=1\\un{A}\\); \\(I_3=\\dfrac{6}{3}=2\\un{A}\\) (\\(1+2=3\\) ✓)"]'></div></div>
+  </div>
+  <div class="caja full"><span class="badge">13</span><h4>Comparación y reglas de oro.</h4>
+    <div class="scroll"><table class="tb"><tr><th></th><th>Serie</th><th>Paralelo</th></tr>
+      <tr><td>Corriente</td><td>Igual en todos los elementos</td><td>Se reparte; más corriente por la menor \(R\)</td></tr>
+      <tr><td>Voltaje</td><td>Se reparte; más voltaje en la mayor \(R\)</td><td>Igual en todas las ramas (el de la fuente)</td></tr>
+      <tr><td>Al agregar un resistor</td><td>\(R_{eq}\) <b>aumenta</b>; la corriente total <b>disminuye</b></td><td>\(R_{eq}\) <b>disminuye</b>; la corriente total <b>aumenta</b></td></tr>
+      <tr><td>Ampolletas iguales</td><td>Brillan <b>menos</b> (se reparten el voltaje)</td><td>Cada una brilla como si estuviera sola</td></tr>
+      <tr><td>Si una se quema</td><td>Se apagan todas</td><td>Las demás siguen encendidas</td></tr></table></div>
+    <p><b>Conservación:</b> en un nodo, la corriente que entra es igual a la que sale (la carga no se pierde). En cualquier camino cerrado, la suma de los voltajes de los elementos es igual al voltaje de la fuente (la energía se conserva).</p>
+  </div>
+  <div class="caja full"><span class="badge">★</span><h4>Ejemplo clásico PAES: ¿qué ampolleta brilla más?</h4>
+    <p>Tres ampolletas idénticas (resistencia \(R\) constante) y una batería ideal de voltaje \(V\). El brillo depende de la <b>potencia</b> que disipa cada una.</p>
+    <div class="wid" id="w-brillo" style="margin-top:0"><div class="wt">Interactivo · quema la ampolleta B</div>
+      <div class="flex"><div id="bfig"></div><div class="grow">
+      <p>\(R_{eq}=R+\dfrac{R}{2}=\dfrac{3R}{2}\); \(I_T=\dfrac{2V}{3R}\) pasa toda por A; por B y C pasa la mitad. \(V_A=\dfrac{2V}{3}\); \(V_B=V_C=\dfrac{V}{3}\).</p>
+      <label><input type="checkbox" id="bq"> Quemar la ampolleta B</label><div id="bout" class="small"></div></div></div></div>
+  </div>
+  <span class="pg">3</span>
+</section>
+
+<!-- =================================================================== PÁGINA 4 -->
+<section class="hoja" id="t-kirch">
+  <div class="bloque">TEORÍA · LEYES DE KIRCHHOFF, INSTRUMENTOS Y PROBLEMAS TIPO</div>
+  <div class="nota"><b>Ley de nodos de Kirchhoff (conservación de la carga).</b> Un <b>nodo</b> es un punto donde se unen tres o más conductores. Como la carga no se crea ni se acumula en él, <b>la suma de las intensidades de corriente que entran a un nodo es igual a la suma de las que salen</b>: \(\sum I_{\text{entran}}=\sum I_{\text{salen}}\).</div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">14</span><h4>Ley de nodos (Kirchhoff).</h4>
+      <p><span class="rojo"><b>Entran:</b></span> \(I_1+I_2\). <span class="azul"><b>Salen:</b></span> \(I_3+I_4\). Ejemplo: \(5+2=4+I_4\Rightarrow\boxed{I_4=3\un{A}}\).</p>
+      <p><b>Analogía:</b> es como el agua en una unión de cañerías: el caudal que llega es el que se reparte.</p>
+      <p><b>Consecuencias:</b> en <b>serie</b> no hay nodos intermedios, por eso la corriente es <b>la misma</b>; en <b>paralelo</b> la corriente total <b>se reparte</b> en las ramas y se vuelve a juntar: \(I_T=I_1+I_2+\dots\)</p>
+      <div class="wid" id="w-nodo"><div class="wt">Interactivo · cambia las corrientes</div>
+        <div class="c" id="nfig"></div>
+        <label>\(I_1\) entra <input type="range" id="n1" min="0" max="10" value="5"><span class="val" data-for="n1"></span></label>
+        <label>\(I_2\) entra <input type="range" id="n2" min="0" max="10" value="2"><span class="val" data-for="n2"></span></label>
+        <label>\(I_3\) sale <input type="range" id="n3" min="0" max="10" value="4"><span class="val" data-for="n3"></span></label>
+        <div id="nout" class="small"></div></div>
+    </div>
+    <div class="caja"><span class="badge">15</span><h4>Ley de mallas (conservación de la energía).</h4>
+      <div class="c static-ckt" data-s="42" data-ckt='[["bat",0,0,0,2.4,"18 V","w"],["R",0,2.4,2.2,2.4,"4 Ω","n"],["w",2.2,2.4,2.4,2.4],["R",2.4,2.4,2.4,0,"6 Ω","w"],["w",2.4,0,0,0],["w",2.4,2.4,4,2.4],["R",4,2.4,4,0,"3 Ω","e"],["w",4,0,2.4,0],["dot",2.4,2.4],["dot",2.4,0]]'></div>
+      <p>En cualquier <b>camino cerrado</b> (malla), la suma de los voltajes en los elementos es igual al voltaje de la fuente: \(V_{\text{fuente}}=\sum V_{\text{elementos}}\).</p>
+      <p>Camino por la de \(6\ohm\): \(12+6=18\un{V}\) ✓. Camino por la de \(3\ohm\): \(12+6=18\un{V}\) ✓.</p>
+      <p>Por eso, <b>dos elementos en paralelo tienen siempre el mismo voltaje</b>: están entre los mismos dos nodos.</p>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">16</span><h4>Problemas con amperímetros y voltímetros: método.</h4>
+    <table class="plain"><tr><td>1.</td><td style="font-weight:400"><b>Instrumentos ideales:</b> el amperímetro equivale a un <b>cable</b> (\(R\approx0\)); el voltímetro, a una rama <b>abierta</b>. <b>Bórralos</b> y redibuja el circuito.</td></tr>
+      <tr><td>2.</td><td style="font-weight:400"><b>Resuelve</b> el circuito: \(R_{eq}\), corriente total, voltajes y corrientes de cada rama.</td></tr>
+      <tr><td>3.</td><td style="font-weight:400"><b>Ubica cada instrumento:</b> el amperímetro lee la corriente <b>de la rama en que está</b>; el voltímetro lee la diferencia de potencial <b>entre los dos puntos donde se conecta</b>.</td></tr>
+      <tr><td>4.</td><td style="font-weight:400"><b>Comprueba con Kirchhoff:</b> en el nodo, la lectura de A₁ debe ser A₂ + A₃.</td></tr></table>
+    <div class="wid" id="w-instr"><div class="wt">Interactivo · lecturas de los instrumentos</div>
+      <div class="flex"><div id="ifig"></div><div class="grow"><label><input type="checkbox" id="iq"> Quitar la rama de \(3\ohm\)</label><div id="iout"></div></div></div></div>
+  </div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">17</span><h4>Errores de conexión de los instrumentos.</h4>
+      <p><b>Amperímetro en paralelo</b> con un resistor: como su resistencia es casi cero, “puentea” (cortocircuita) al resistor. Casi toda la corriente pasa por el amperímetro y la corriente total puede volverse muy grande: <b>se puede dañar el instrumento</b>.</p>
+      <p><b>Voltímetro en serie:</b> como su resistencia es muy grande, <b>casi no circula corriente</b> (las ampolletas se apagan) y marca aproximadamente el voltaje de la fuente.</p>
+      <p><b>Regla:</b> el amperímetro “se intercala” (serie) y el voltímetro “se cuelga” de los extremos (paralelo).</p>
+    </div>
+    <div class="caja"><span class="badge">18</span><h4>¿Qué pasa si se agrega o quita un resistor?</h4>
+      <p>Razona en cadena, siempre con la <b>batería ideal</b> (voltaje fijo): <b>1.</b> ¿Cómo cambia \(R_{eq}\)? <b>2.</b> \(I_T=V/R_{eq}\) cambia al revés. <b>3.</b> Los elementos en <b>serie</b> con la fuente cambian igual que \(I_T\). <b>4.</b> Lo que queda para el paralelo es \(V-V_{\text{serie}}\).</p>
+      <p><b>Ejemplo:</b> en el circuito de la caja 16 se <b>quita</b> la rama de \(3\ohm\): \(R_{eq}=10\ohm\) (aumenta) \(\Rightarrow\) A₁ \(=1{,}8\un{A}\) (disminuye) \(\Rightarrow\) V₁ \(=7{,}2\un{V}\) (disminuye) \(\Rightarrow\) en la de \(6\ohm\): \(10{,}8\un{V}\), A₂ \(=1{,}8\un{A}\) (aumenta). <i>Compruébalo en el interactivo de la caja 16.</i></p>
+      <p class="tiny">Si todo está en paralelo con la fuente, agregar o quitar una rama no cambia la corriente de las otras ramas; solo cambia la corriente total.</p>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">19</span><h4>Problema tipo: tres ampolletas iguales en distintas configuraciones.</h4>
+    <p>Con la <b>misma batería</b> (voltaje \(V\) fijo), la potencia total es \(P_T=\dfrac{V^2}{R_{eq}}\): <b>a menor \(R_{eq}\), mayor corriente total y mayor potencia disipada</b>. Solo hay que ordenar las \(R_{eq}\).</p>
+    <div class="wid" id="w-cfg" style="margin-top:0"><div class="wt">Interactivo · compara las cuatro configuraciones</div>
+      <label>Voltaje de la batería <input type="range" id="cfv" min="3" max="24" value="12"><span class="val" data-for="cfv"></span></label><div id="cfout"></div></div>
+    <p><b>Conclusión:</b> \(P_{\text{paralelo}}=9\cdot P_{\text{serie}}\). Mientras más ramas en paralelo, menor \(R_{eq}\) y más potencia total. Para saber qué ampolleta <b>brilla más dentro de un mismo circuito</b>, compara la potencia de cada una (\(P=I^2R\) con su propia corriente): ver el ejemplo ★ de la página 3.</p>
+  </div>
+  <span class="pg">4</span>
+</section>
+
+<!-- =================================================================== PÁGINA 5 -->
+<section class="hoja" id="t-pot">
+  <div class="bloque">TEORÍA · POTENCIA, ENERGÍA, CONSUMO Y EFICIENCIA</div>
+  <div class="nota"><b>Idea central.</b> La <b>potencia</b> indica <b>qué tan rápido</b> un aparato transforma energía eléctrica en otra forma (luz, calor, movimiento, sonido). La <b>energía</b> consumida depende de la potencia <b>y del tiempo</b> de uso: es lo que registra el medidor y lo que se paga en la cuenta de la luz.</div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">20</span><h4>Potencia eléctrica.</h4>
+      \[\boxed{P=V\cdot I}\qquad 1\un{W}=1\un{V}\cdot1\un{A}=1\,\frac{\mathrm{J}}{\mathrm{s}}\]
+      <p>Combinándola con la ley de Ohm:</p>\[P=I^2\cdot R\qquad\qquad P=\frac{V^2}{R}\]
+      <p><b>Ejemplo:</b> hervidor de \(2\,200\un{W}\) a \(220\un{V}\): \(I=\dfrac{2\,200}{220}=10\un{A}\); \(R=\dfrac{220}{10}=22\ohm\).</p>
+      <p><b>¿Cuál fórmula uso?</b> En <b>serie</b> (misma \(I\)) conviene \(P=I^2R\): disipa más la mayor \(R\). En <b>paralelo</b> (mismo \(V\)) conviene \(P=V^2/R\): disipa más la menor \(R\).</p>
+    </div>
+    <div class="caja"><span class="badge">21</span><h4>Energía eléctrica y kWh.</h4>
+      \[\boxed{E=P\cdot t}\]
+      <table class="tb"><tr><th>Si \(P\) está en</th><th>y \(t\) en</th><th>\(E\) queda en</th></tr><tr><td>W</td><td>segundos</td><td>joule (J)</td></tr><tr><td>kW</td><td>horas</td><td>kilowatt-hora (kWh)</td></tr></table>
+      <p>\(1\un{kWh}=1\,000\un{W}\cdot3\,600\un{s}=3{,}6\cdot10^{6}\un{J}\). <b>El kWh es unidad de energía</b>, no de potencia.</p>
+      <p><b>Ejemplo:</b> el hervidor anterior (\(2{,}2\un{kW}\)) durante 6 minutos (\(0{,}1\un{h}\)): \(E=0{,}22\un{kWh}\).</p>
+    </div>
+    <div class="caja"><span class="badge">22</span><h4>Eficiencia energética.</h4>
+      \[\boxed{\eta=\frac{E_{\text{útil}}}{E_{\text{consumida}}}\cdot100\%}\]
+      <p>\(\eta\) siempre es <b>menor que \(100\%\)</b>: parte de la energía se <b>transforma</b> en formas no útiles (generalmente calor), pero <b>no se destruye</b>.</p>
+      <p><b>Ejemplo:</b> un motor consume \(500\un{W}\) y entrega \(400\un{W}\) mecánicos: \(\eta=80\%\); se disipan \(100\un{W}\).</p>
+      <div class="wid" id="w-ef"><div class="wt">Interactivo · diagrama de flujo de energía</div>
+        <div id="effig" class="c"></div>
+        <label>Potencia consumida <input type="range" id="efp" min="10" max="600" step="10" value="60"><span class="val" data-for="efp"></span></label>
+        <label>Fracción útil <input type="range" id="efu" min="1" max="99" value="5"><span class="val" data-for="efu"></span></label>
+        <div id="efout" class="small"></div></div>
+    </div>
+    <div class="caja"><span class="badge">23</span><h4>Consumo de artefactos y etiqueta energética.</h4>
+      <p><b>Costo:</b> \(E\cdot(\text{precio del kWh})\). Con \(\$200\) por kWh, un televisor de \(120\un{W}\) usado 4 h diarias consume \(14{,}4\un{kWh}\) al mes y cuesta \(\$2\,880\).</p>
+      <p><b>Etiqueta de eficiencia energética:</b> clasifica los artefactos por letras (de la más eficiente, A o superior, a la menos eficiente) e indica el <b>consumo de energía</b> (por ejemplo, en kWh/año). A igual servicio, el más eficiente consume menos energía y cuesta menos usarlo.</p>
+      <div class="wid" id="w-energia"><div class="wt">Interactivo · calcula la cuenta de la luz</div>
+        <div class="scroll"><table class="tb mini" id="etab"></table></div>
+        <label>Precio del kWh ($) <input type="number" id="eprice" value="200" min="0"> Días <input type="number" id="edays" value="30" min="1"></label>
+        <div id="eout" class="small"></div></div>
+    </div>
+  </div>
+  <div class="nota"><b>Errores frecuentes.</b> <b>1.</b> Pensar que el aparato de mayor potencia es el que más energía consume: depende también del <b>tiempo</b> (\(E=P\cdot t\)). <b>2.</b> Confundir kW (potencia) con kWh (energía). <b>3.</b> Olvidar convertir minutos a horas (\(15\un{min}=0{,}25\un{h}\)) o W a kW. <b>4.</b> Decir que la energía “se pierde”: se <b>transforma</b>. <b>5.</b> Creer que la corriente “se consume” en una ampolleta: la corriente que entra es la misma que sale; lo que se transforma es la <b>energía</b>.</div>
+  <div class="caja full"><span class="badge">★</span><h4>Ejemplo integrado: una estufa eléctrica.</h4>
+    <p>Una estufa tiene una resistencia de \(24{,}2\ohm\) y se conecta a \(220\un{V}\). Se usa 3 horas diarias durante 30 días y el kWh cuesta \(\$200\).</p>
+    <div class="mini-stepper" data-steps='["<b>Corriente (Ohm).</b> \\(I=\\dfrac{V}{R}=\\dfrac{220}{24{,}2}\\approx9{,}1\\un{A}\\)","<b>Potencia.</b> \\(P=\\dfrac{V^2}{R}=\\dfrac{48\\,400}{24{,}2}=2\\,000\\un{W}=2\\un{kW}\\)","<b>Energía del mes.</b> \\(E=2\\un{kW}\\cdot(3\\cdot30)\\un{h}=180\\un{kWh}\\)","<b>Costo.</b> \\(180\\cdot200=\\$36\\,000\\)","<b>¿Y la eficiencia?</b> Si el objetivo es <b>calentar</b>, casi toda la energía se transforma en calor útil. En una ampolleta incandescente, ese mismo calor es energía <b>no útil</b>: la eficiencia depende de <b>para qué</b> se usa el aparato."]'></div>
+  </div>
+  <span class="pg">5</span>
+</section>
+
+<!-- =================================================================== PÁGINA 6 -->
+<section class="hoja" id="t-casa">
+  <div class="bloque">TEORÍA · LA INSTALACIÓN ELÉCTRICA DOMICILIARIA</div>
+  <div class="nota"><b>En Chile</b> la red domiciliaria entrega corriente <b>alterna</b> de \(220\un{V}\) y \(50\un{Hz}\). Todos los artefactos y enchufes de una casa están conectados <b>en paralelo</b>: así cada uno recibe los \(220\un{V}\) y funciona de forma <b>independiente</b> de los demás.</div>
+  <div class="caja full"><span class="badge">24</span><h4>Recorrido de la electricidad en una casa.</h4>
+    <div class="scroll"><svg viewBox="0 0 900 150" width="100%" style="min-width:640px" class="sans" font-size="13">
+      <defs><marker id="fl" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7z" fill="#111"/></marker></defs>
+      <g stroke="#111" stroke-width="1.3">
+      <rect x="5" y="50" width="110" height="50" rx="4" fill="#ececec"/><rect x="145" y="50" width="105" height="50" rx="4" fill="#faefd3"/><rect x="280" y="50" width="110" height="50" rx="4" fill="#faefd3"/>
+      <rect x="415" y="18" width="270" height="124" rx="6" fill="#f3f6fc" stroke-dasharray="5 4"/>
+      <rect x="425" y="50" width="78" height="50" rx="4" fill="#dce4f6"/><rect x="515" y="50" width="78" height="50" rx="4" fill="#dcf0e5"/>
+      <rect x="605" y="28" width="72" height="26" rx="3" fill="#f8e1e1"/><rect x="605" y="62" width="72" height="26" rx="3" fill="#f8e1e1"/><rect x="605" y="96" width="72" height="26" rx="3" fill="#f8e1e1"/>
+      <rect x="712" y="28" width="180" height="26" rx="3" fill="#fff"/><rect x="712" y="62" width="180" height="26" rx="3" fill="#fff"/><rect x="712" y="96" width="180" height="26" rx="3" fill="#fff"/>
+      <g marker-end="url(#fl)"><line x1="115" y1="75" x2="143" y2="75"/><line x1="250" y1="75" x2="278" y2="75"/><line x1="390" y1="75" x2="423" y2="75"/><line x1="503" y1="75" x2="513" y2="75"/><line x1="593" y1="75" x2="603" y2="41"/><line x1="593" y1="75" x2="603" y2="75"/><line x1="593" y1="75" x2="603" y2="109"/><line x1="677" y1="41" x2="710" y2="41"/><line x1="677" y1="75" x2="710" y2="75"/><line x1="677" y1="109" x2="710" y2="109"/></g></g>
+      <g text-anchor="middle"><text x="60" y="72" font-weight="700">Red de</text><text x="60" y="87" font-weight="700">distribución</text>
+      <text x="197" y="72" font-weight="700">Empalme</text><text x="197" y="88">(acometida)</text><text x="335" y="72" font-weight="700">Medidor</text><text x="335" y="88">(registra kWh)</text>
+      <text x="550" y="12" font-weight="700">Tablero eléctrico</text><text x="464" y="72">Interruptor</text><text x="464" y="87">general</text><text x="554" y="72">Protector</text><text x="554" y="87">diferencial</text>
+      <text x="641" y="46">Automático 1</text><text x="641" y="80">Automático 2</text><text x="641" y="114">Automático 3</text>
+      <text x="802" y="46">Circuito de alumbrado</text><text x="802" y="80">Circuito de enchufes</text><text x="802" y="114">Circuito de cocina</text></g></svg></div>
+  </div>
+  <div class="caja full"><span class="badge">25</span><h4>Componentes y sus funciones.</h4>
+    <div class="scroll"><table class="tb">
+      <tr><td><b>Empalme o acometida</b></td><td>Conexión entre la red pública de distribución y la vivienda.</td></tr>
+      <tr><td><b>Medidor (kWh)</b></td><td>Registra la <b>energía</b> consumida, en kWh. Con su lectura se calcula la cuenta.</td></tr>
+      <tr><td><b>Tablero eléctrico</b></td><td>Caja que reúne los dispositivos de protección y desde donde salen los distintos circuitos de la casa.</td></tr>
+      <tr><td><b>Interruptor general</b></td><td>Permite cortar la energía de toda la instalación (por ejemplo, para hacer reparaciones).</td></tr>
+      <tr><td><b>Interruptor automático (disyuntor termomagnético)</b></td><td>Protege <b>los cables y la instalación</b>: corta la corriente cuando hay <b>sobrecarga</b> o <b>cortocircuito</b>. Se rearma manualmente. Reemplazó a los antiguos <b>fusibles</b>, que se funden y deben cambiarse.</td></tr>
+      <tr><td><b>Protector diferencial</b></td><td>Protege <b>a las personas</b>: compara la corriente que va por la fase con la que vuelve por el neutro; si hay diferencia (una <b>fuga</b>, por ejemplo a través del cuerpo de una persona, desde unos \(30\un{mA}\)), corta en milésimas de segundo.</td></tr>
+      <tr><td><b>Conexión a tierra</b></td><td>Cable de protección (verde-amarillo) que lleva a tierra la corriente de fuga si la carcasa metálica de un artefacto queda energizada.</td></tr>
+      <tr><td><b>Enchufes, interruptores y conductores</b></td><td>Enchufes: puntos de conexión (con terminal de tierra). Interruptores: abren o cierran un circuito (se instalan en la fase). Conductores: cables de cobre aislados (fase, neutro y tierra); su grosor depende de la corriente que deben transportar.</td></tr></table></div>
+  </div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">26</span><h4>Cortocircuito y sobrecarga.</h4>
+      <p><b>Cortocircuito:</b> la fase y el neutro se tocan directamente (sin pasar por un aparato). La resistencia es casi <b>cero</b> y, por \(I=V/R\), la corriente se vuelve <b>enorme</b>: los cables se calientan y puede haber incendio.</p>
+      <p><b>Sobrecarga:</b> se conectan muchos aparatos al mismo circuito. Como están en paralelo, <b>la corriente total es la suma</b> de las corrientes de cada aparato y puede superar lo que el cable soporta.</p>
+      <p>En ambos casos actúa el <b>interruptor automático</b>.</p>
+    </div>
+    <div class="caja"><span class="badge">27</span><h4>Ejemplo: ¿salta el automático?</h4>
+      <p>Circuito de enchufes (\(220\un{V}\)) con automático de \(16\un{A}\): \(P_{\max}=220\cdot16=3\,520\un{W}\). Hervidor + plancha + microondas: \(4\,300\un{W}\Rightarrow I\approx19{,}5\un{A}>16\un{A}\): <b>salta</b>. La solución <b>no</b> es poner un automático mayor, sino repartir los aparatos en distintos circuitos.</p>
+      <div class="wid" id="w-auto"><div class="wt">Interactivo · conecta aparatos</div>
+        <div id="alist"></div>
+        <label>Automático <select id="abrk"><option value="10">10 A</option><option value="16" selected>16 A</option><option value="20">20 A</option></select></label>
+        <div id="aout" class="small"></div></div>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">★</span><h4>El enchufe y la seguridad eléctrica.</h4>
+    <div class="flex"><svg width="150" height="120" viewBox="0 0 150 120"><rect x="10" y="10" width="130" height="86" rx="14" fill="#f0f0f0" stroke="#111" stroke-width="1.5"/><circle cx="75" cy="53" r="34" fill="#fff" stroke="#111" stroke-width="1.5"/><circle cx="52" cy="53" r="4.5" fill="#a32020"/><circle cx="75" cy="53" r="4.5" fill="#127a4d"/><circle cx="98" cy="53" r="4.5" fill="#1e50b4"/><g font-size="11" text-anchor="middle"><text x="40" y="112" fill="#a32020">fase</text><text x="75" y="112" fill="#127a4d">tierra</text><text x="110" y="112" fill="#1e50b4">neutro</text></g></svg>
+    <div class="grow"><table class="plain"><tr><td>Fase</td><td style="font-weight:400">Conductor “con voltaje”: entre la fase y el neutro hay \(220\un{V}\). Por eso los interruptores se instalan en la fase.</td></tr><tr><td>Neutro</td><td style="font-weight:400">Conductor de retorno de la corriente; su potencial es cercano al de la tierra.</td></tr><tr><td>Tierra</td><td style="font-weight:400">Conductor de protección: normalmente no lleva corriente; solo actúa ante una falla.</td></tr></table>
+    <p><b>Buenas prácticas:</b> no sobrecargar alargadores ni “zapatillas”; no usar artefactos con las manos mojadas (el agua con sales disminuye la resistencia de la piel y aumenta la corriente); cortar el interruptor general antes de reparar; nunca reemplazar un automático por otro de mayor capacidad que la que soportan los cables.</p></div></div>
+  </div>
+  <span class="pg">6</span>
+</section>
+
+<!-- =================================================================== PÁGINA 7 -->
+<section class="hoja" id="t-hab">
+  <div class="bloque">TEORÍA · HABILIDADES DE PENSAMIENTO CIENTÍFICO (PAES)</div>
+  <div class="nota"><b>¿Qué evalúa la PAES de Ciencias?</b> No basta con saber fórmulas: cada pregunta combina un <b>conocimiento</b> (por ejemplo, la ley de Ohm) con una <b>habilidad</b>. Muchas preguntas presentan una investigación (experimento, tabla o gráfico) y te piden analizarla. Domina el vocabulario: <b>problema, pregunta, hipótesis, predicción, variables, procedimiento, resultados, inferencia y conclusión</b>.</div>
+  <div class="caja full"><span class="badge">28</span><h4>Las cinco habilidades y cómo se preguntan en electricidad.</h4>
+    <div class="scroll"><table class="tb"><tr><th>Habilidad</th><th>Qué se te pide</th><th>Ejemplo de pregunta</th></tr>
+      <tr><td style="background:var(--demre-bg)"><b>Observar y plantear preguntas</b></td><td>Identificar una <b>pregunta investigable</b> (se responde con datos) y una <b>hipótesis</b> (explicación tentativa que se pone a prueba).</td><td>“¿Cuál de las siguientes es una hipótesis para el problema de por qué se calienta un cable?”</td></tr>
+      <tr><td style="background:var(--demre-bg)"><b>Planificar y conducir una investigación</b></td><td>Reconocer <b>componentes</b> de una investigación, <b>variables</b>, <b>objetivo</b>, <b>procedimientos</b>, <b>instrumentos</b> y <b>evidencias</b> que sustentan una ley.</td><td>“¿Qué instrumento y conexión permiten medir la variable dependiente?”</td></tr>
+      <tr><td style="background:var(--demre-bg)"><b>Procesar y analizar la evidencia</b></td><td>Leer tablas y gráficos, encontrar <b>relaciones, patrones o tendencias</b>, hacer <b>predicciones</b> y obtener <b>conclusiones</b> o inferencias.</td><td>“Según el gráfico \(V\)–\(I\), ¿cuánta corriente circulará si el voltaje es \(15\un{V}\)?”</td></tr>
+      <tr><td style="background:var(--demre-bg)"><b>Evaluar</b></td><td>Juzgar la <b>validez, confiabilidad</b>, alcances y limitaciones; la <b>replicabilidad</b>; la <b>coherencia</b> entre sus componentes, y su aporte a la <b>tecnología</b>.</td><td>“¿Qué limitación tiene la conclusión del estudiante?”</td></tr>
+      <tr><td style="background:var(--demre-bg)"><b>Comunicar</b></td><td>Elegir el <b>recurso</b> adecuado (tabla, gráfico, modelo, diagrama) según el objetivo.</td><td>“¿Qué gráfico permite mostrar mejor la relación entre \(V\) e \(I\)?”</td></tr></table></div>
+  </div>
+  <div class="grid2">
+    <div class="caja"><span class="badge">29</span><h4>Componentes de una investigación (ejemplo).</h4>
+      <table class="plain">
+        <tr><td>Observación</td><td style="font-weight:400">Los alargadores largos y delgados se calientan más.</td></tr>
+        <tr><td>Problema</td><td style="font-weight:400">¿Cómo afecta la longitud de un alambre a su resistencia eléctrica?</td></tr>
+        <tr><td>Objetivo</td><td style="font-weight:400"><b>Determinar</b> la relación entre la longitud de un alambre de nicromo y su resistencia. <span class="tiny">(verbo en infinitivo)</span></td></tr>
+        <tr><td>Hipótesis</td><td style="font-weight:400">A mayor longitud del alambre, mayor es su resistencia eléctrica.</td></tr>
+        <tr><td>Predicción</td><td style="font-weight:400">Si se duplica la longitud, la resistencia se duplicará. <span class="tiny">(“si… entonces…”)</span></td></tr>
+        <tr><td>Procedimiento</td><td style="font-weight:400">Se miden \(V\) e \(I\) para alambres de 20, 40, 60 y 80 cm del mismo grosor, con la misma fuente, y se calcula \(R=V/I\). Se repite 3 veces.</td></tr>
+        <tr><td>Resultados</td><td style="font-weight:400">\(R\): 2, 4, 6 y \(8\ohm\).</td></tr>
+        <tr><td>Conclusión</td><td style="font-weight:400">La resistencia es directamente proporcional a la longitud: se acepta la hipótesis.</td></tr></table>
+    </div>
+    <div class="caja"><span class="badge">30</span><h4>Variables de una investigación.</h4>
+      <p><b>Independiente (VI):</b> la que el investigador <b>modifica</b> a propósito. <i>En el ejemplo: la longitud del alambre.</i></p>
+      <p><b>Dependiente (VD):</b> la que se <b>mide</b> como respuesta. <i>En el ejemplo: la resistencia (calculada con \(V\) e \(I\)).</i></p>
+      <p><b>Controladas:</b> las que se <b>mantienen constantes</b> para que solo influya la VI. <i>En el ejemplo: material, grosor, temperatura, fuente.</i></p>
+      <p><b>Truco:</b> en “¿Cómo influye <u>X</u> en <u>Y</u>?”, X es la VI e Y es la VD. <b>En un gráfico</b>, la VI suele ir en el eje horizontal.</p>
+      <p><b>Instrumentos:</b> corriente: amperímetro (serie); voltaje: voltímetro (paralelo); longitud: regla o huincha; temperatura: termómetro; tiempo: cronómetro.</p>
+    </div>
+    <div class="caja"><span class="badge">31</span><h4>Evaluar una investigación.</h4>
+      <p><b>Validez:</b> ¿mide realmente lo que dice medir? Requiere <b>controlar variables</b>: si cambian dos cosas a la vez, no se sabe cuál causó el efecto.</p>
+      <p><b>Confiabilidad:</b> ¿los resultados son consistentes? Aumenta al <b>repetir mediciones</b> y promediar, con instrumentos adecuados y calibrados.</p>
+      <p><b>Replicabilidad:</b> ¿otra persona puede repetirla? Requiere describir <b>con detalle</b> materiales y procedimiento.</p>
+      <p><b>Alcances y limitaciones:</b> la conclusión vale solo para las condiciones estudiadas. Si se probó <b>un</b> material, no se puede generalizar a <b>todos</b>.</p>
+      <p><b>Coherencia:</b> el problema, la hipótesis, el diseño y la conclusión deben referirse a <b>las mismas variables</b>.</p>
+    </div>
+    <div class="caja"><span class="badge">32</span><h4>Comunicar: ¿qué recurso uso?</h4>
+      <table class="tb"><tr><th>Objetivo</th><th>Recurso adecuado</th></tr>
+        <tr><td>Mostrar la relación entre dos variables numéricas (\(V\) e \(I\))</td><td>Gráfico de líneas o de dispersión</td></tr>
+        <tr><td>Comparar el consumo de varios artefactos</td><td>Gráfico de barras</td></tr>
+        <tr><td>Mostrar partes de un total (% del consumo de una casa)</td><td>Gráfico circular</td></tr>
+        <tr><td>Registrar mediciones ordenadas</td><td>Tabla de datos</td></tr>
+        <tr><td>Explicar cómo está conectado un circuito</td><td>Diagrama esquemático (modelo)</td></tr>
+        <tr><td>Mostrar el destino de la energía (eficiencia)</td><td>Diagrama de flujo de energía</td></tr></table>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">★</span><h4>Practica: ¿qué componente de la investigación es?</h4>
+    <div class="wid" id="w-clasif" style="margin-top:0"><div class="wt">Interactivo · clasifica cada enunciado</div><div class="cl-list"></div></div>
+  </div>
+  <span class="pg">7</span>
+</section>
+
+<!-- =================================================================== PÁGINA 8 -->
+<section class="hoja" id="t-ej">
+  <div class="bloque">TEORÍA · EJEMPLOS RESUELTOS TIPO PAES</div>
+  <div class="nota"><b>Método para cada pregunta.</b> <b>1.</b> Identifica la <b>habilidad</b> que se pide. <b>2.</b> Extrae los datos y anota sus unidades. <b>3.</b> Haz un esquema del circuito o de la investigación. <b>4.</b> Resuelve y <b>descarta</b> alternativas: muchas son errores típicos. <b>5.</b> Verifica unidades y que el resultado tenga sentido.</div>
+  <div class="grid2">
+    <div class="caja ejemplo" data-ans="A" data-steps='["<b>Paralelo.</b> \\(\\dfrac{3\\cdot6}{3+6}=2\\ohm\\).","<b>Serie.</b> \\(R_{eq}=2+2=4\\ohm\\); \\(I_T=\\dfrac{12}{4}=3\\un{A}\\).","<b>Voltaje del paralelo.</b> \\(3\\cdot2=6\\un{V}\\).","<b>Por la de \\(6\\ohm\\).</b> \\(I=\\dfrac{6}{6}=1\\un{A}\\). <b>Alternativa A.</b>","<b>Distractores:</b> C) es la corriente total; B) es la corriente por la de \\(3\\ohm\\); D) sale de dividir \\(12\\un{V}\\) por \\(2\\ohm\\) (olvidar que el voltaje se reparte)."]'><span class="badge">33</span><div class="hab"><span class="habtag">Procesar y analizar la evidencia</span></div><h4>Ejemplo 1: circuito mixto.</h4>
+      <div class="flex"><div class="static-ckt" data-s="40" data-ckt='[["bat",0,0,0,2.6,"12 V","w"],["R",0,2.6,2.2,2.6,"2 Ω","n"],["w",2.2,2.6,2.4,2.6],["R",2.4,2.6,2.4,0,"3 Ω","w"],["w",2.4,0,0,0],["w",2.4,2.6,4,2.6],["R",4,2.6,4,0,"6 Ω","e"],["w",4,0,2.4,0],["dot",2.4,2.6],["dot",2.4,0]]'></div>
+      <div class="grow">¿Cuál es la corriente que circula por la resistencia de \(6\ohm\)?<br><button class="ealt" data-l="A">A) \(1\un{A}\)</button><button class="ealt" data-l="B">B) \(2\un{A}\)</button><button class="ealt" data-l="C">C) \(3\un{A}\)</button><button class="ealt" data-l="D">D) \(6\un{A}\)</button></div></div>
+      <div class="stp"></div>
+    </div>
+    <div class="caja ejemplo" data-ans="B" data-steps='["<b>¿Qué se quiere investigar?</b> El efecto de la <b>longitud</b> (VI) sobre la resistencia (VD).","<b>¿Qué cambió entre los alambres?</b> La longitud (50 y 100 cm) <b>y también el material</b> (cobre y nicromo).","<b>Problema de validez.</b> La diferencia de resistencia puede deberse al material (el nicromo tiene una resistividad mucho mayor), no a la longitud.","<b>Corrección.</b> Usar el mismo material y grosor, variando solo la longitud. <b>Alternativa B.</b>"]'><span class="badge">34</span><div class="hab"><span class="habtag">Evaluar</span></div><h4>Ejemplo 2: validez de una investigación.</h4>
+      <p>Un estudiante quiere saber si <b>la longitud</b> de un alambre influye en su resistencia. Usa un alambre de cobre de \(50\un{cm}\) y uno de nicromo de \(100\un{cm}\), y mide que el de nicromo tiene más resistencia. Concluye: “a mayor longitud, mayor resistencia”. ¿Qué se puede afirmar?</p>
+      <div class="ealts-l"><button class="ealt" data-l="A">A) La conclusión es válida, porque el alambre más largo tuvo más resistencia.</button><button class="ealt" data-l="B">B) La conclusión no es válida, porque cambió dos variables a la vez (longitud y material).</button><button class="ealt" data-l="C">C) La conclusión no es válida, porque debió usar un voltímetro en serie.</button><button class="ealt" data-l="D">D) La investigación es válida, pero falta una hipótesis.</button></div>
+      <div class="stp"></div>
+    </div>
+    <div class="caja ejemplo" data-ans="C" data-steps='["<b>Ahorro de potencia por ampolleta.</b> \\(60-8=52\\un{W}\\).","<b>Total de ampolletas.</b> \\(8\\cdot52=416\\un{W}=0{,}416\\un{kW}\\).","<b>Horas en el mes.</b> \\(5\\cdot30=150\\un{h}\\).","<b>Energía ahorrada.</b> \\(0{,}416\\cdot150=62{,}4\\un{kWh}\\).","<b>Dinero.</b> \\(62{,}4\\cdot200=\\$12\\,480\\). <b>Alternativa C.</b> (D es el costo total de las incandescentes)."]'><span class="badge">35</span><div class="hab"><span class="habtag">Procesar y analizar la evidencia</span></div><h4>Ejemplo 3: consumo y costo.</h4>
+      <p>Una familia reemplaza 8 ampolletas incandescentes de \(60\un{W}\) por ampolletas LED de \(8\un{W}\) que iluminan lo mismo. Cada ampolleta se usa \(5\un{h}\) al día. Si el kWh cuesta \(\$200\), ¿cuánto ahorran en 30 días?</p>
+      <button class="ealt" data-l="A">A) \(\$1\,248\)</button><button class="ealt" data-l="B">B) \(\$8\,320\)</button><button class="ealt" data-l="C">C) \(\$12\,480\)</button><button class="ealt" data-l="D">D) \(\$14\,400\)</button>
+      <div class="stp"></div>
+    </div>
+    <div class="caja ejemplo" data-ans="C" data-steps='["<b>¿Qué es una hipótesis?</b> Una afirmación tentativa que explica el fenómeno y se puede poner a prueba.","A) es una <b>pregunta</b>, no una hipótesis.","B) y D) son <b>opiniones</b> que no se pueden poner a prueba directamente.","C) es una explicación tentativa que se puede verificar (midiendo temperatura y corriente). <b>Alternativa C.</b>"]'><span class="badge">36</span><div class="hab"><span class="habtag">Observar y plantear preguntas</span></div><h4>Ejemplo 4: pregunta e hipótesis.</h4>
+      <p>Al tocar un cargador de celular, Martina nota que se entibia mientras carga. ¿Cuál de las siguientes es una <b>hipótesis</b> que podría ponerse a prueba?</p>
+      <div class="ealts-l"><button class="ealt" data-l="A">A) ¿Por qué se calientan los cargadores?</button><button class="ealt" data-l="B">B) Los cargadores son peligrosos y no deberían usarse.</button><button class="ealt" data-l="C">C) El cargador se calienta porque parte de la energía eléctrica se transforma en calor al circular corriente por sus componentes.</button><button class="ealt" data-l="D">D) El cargador de Martina es de mala calidad.</button></div>
+      <div class="stp"></div>
+    </div>
+  </div>
+  <div class="caja full"><span class="badge">37</span><h4>Formulario de la unidad.</h4>
+    <div class="scroll"><table class="tb">
+      <tr><td><b>Corriente</b></td><td>\(I=\dfrac{Q}{t}\), \(Q=n\cdot e\)</td><td><b>Serie</b></td><td>\(R_{eq}=R_1+R_2+\dots\); \(I\) igual; \(V=V_1+V_2\)</td></tr>
+      <tr><td><b>Ley de Ohm</b></td><td>\(V=I\cdot R\)</td><td><b>Paralelo</b></td><td>\(\dfrac{1}{R_{eq}}=\dfrac{1}{R_1}+\dfrac{1}{R_2}\); \(V\) igual; \(I=I_1+I_2\)</td></tr>
+      <tr><td><b>Resistencia de un cable</b></td><td>\(R=\rho\dfrac{L}{A}\)</td><td><b>Potencia</b></td><td>\(P=V\cdot I=I^2R=\dfrac{V^2}{R}\)</td></tr>
+      <tr><td><b>Energía</b></td><td>\(E=P\cdot t\); \(1\un{kWh}=3{,}6\cdot10^6\un{J}\)</td><td><b>Eficiencia</b></td><td>\(\eta=\dfrac{E_{\text{útil}}}{E_{\text{consumida}}}\cdot100\%\)</td></tr>
+      <tr><td><b>Ley de nodos</b></td><td>\(\sum I_{\text{entran}}=\sum I_{\text{salen}}\)</td><td><b>Ley de mallas</b></td><td>\(V_{\text{fuente}}=\sum V_{\text{elementos}}\)</td></tr></table></div>
+  </div>
+  <div class="fin">FIN DE LA TEORÍA · COMIENZA LA EJERCITACIÓN</div>
+  <p class="c small">Marca una alternativa en cada pregunta y luego revisa la resolución paso a paso. Considera fuentes, cables y amperímetros <b>ideales</b> salvo que se indique otra cosa.</p>
+  <span class="pg">8</span>
+</section>
+
+<!-- =================================================================== EJERCITACIÓN -->
+<div id="ejercitacion">
+<section class="hoja"><div class="bloque">EJERCITACIÓN · I · CARGA, CORRIENTE E INSTRUMENTOS</div>
+  <div class="nota">Recuerda: \(I=Q/t\) con \(t\) en segundos; \(Q=n\cdot e\) con \(e=1{,}6\cdot10^{-19}\un{C}\). El amperímetro va en <b>serie</b> y el voltímetro en <b>paralelo</b>.</div>
+  <div class="grid2 ex-slot" data-q="1,2,3,4,5,6"></div><span class="pg">9</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · II · LEY DE OHM Y RESISTENCIA</div>
+  <div class="nota">Recuerda: \(V=I\cdot R\). En un gráfico \(V\) vs \(I\), la pendiente es \(R\). Un conductor es óhmico si su gráfico es una recta que pasa por el origen. \(R=\rho\,L/A\).</div>
+  <div class="grid2 ex-slot" data-q="7,8,9,10,11,12"></div><span class="pg">10</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · III · CIRCUITOS EN SERIE, PARALELO Y MIXTOS</div>
+  <div class="nota">Serie: \(R_{eq}=R_1+R_2+\dots\), misma corriente. Paralelo: \(1/R_{eq}=1/R_1+1/R_2+\dots\), mismo voltaje. Mixto: reduce primero las partes en paralelo (o en serie) más internas.</div>
+  <div class="grid2 ex-slot" data-q="13,14,15,16,17,18"></div><span class="pg">11</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · IV · POTENCIA, ENERGÍA Y EFICIENCIA</div>
+  <div class="nota">Recuerda: \(P=V\cdot I=I^2R=V^2/R\); \(E=P\cdot t\) (kW · h = kWh); \(\eta=\dfrac{\text{útil}}{\text{consumida}}\cdot100\%\). Cuando se indique, considera \(\$200\) por kWh.</div>
+  <div class="grid2 ex-slot" data-q="19,20,21,22,23,24"></div><span class="pg">12</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · V · CONSUMO E INSTALACIÓN ELÉCTRICA DOMICILIARIA</div>
+  <div class="nota">Recuerda: en una casa los artefactos están en <b>paralelo</b> a \(220\un{V}\); la corriente total de un circuito es la suma de las corrientes de los aparatos conectados.</div>
+  <div class="grid2 ex-slot" data-q="25,26,27,28,29,30"></div><span class="pg">13</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · VI · HABILIDADES: PLANTEAR PREGUNTAS Y PLANIFICAR</div>
+  <div class="nota">Una <b>pregunta investigable</b> se responde con mediciones. Una <b>hipótesis</b> es una explicación tentativa (afirmación) que se pone a prueba. VI: lo que se cambia; VD: lo que se mide; controladas: lo que se mantiene igual.</div>
+  <div class="grid2 ex-slot" data-q="31,32,33,34,35,36"></div><span class="pg">14</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · VII · HABILIDADES: PROCESAR, EVALUAR Y COMUNICAR</div>
+  <div class="nota">Evaluar es juzgar la <b>validez</b> (¿se controlaron las variables?), la <b>confiabilidad</b> (¿se repitió?), los <b>alcances</b> (¿se puede generalizar?) y la <b>coherencia</b> entre los componentes de una investigación.</div>
+  <div class="grid2 ex-slot" data-q="37,38,39,40,41,42"></div><span class="pg">15</span></section>
+<section class="hoja"><div class="bloque">EJERCITACIÓN · VIII · KIRCHHOFF, INSTRUMENTOS Y CONFIGURACIONES</div>
+  <div class="nota">Recuerda: en un nodo, \(\sum I_{\text{entran}}=\sum I_{\text{salen}}\). Amperímetro ideal = cable; voltímetro ideal = rama abierta. Con la misma batería, a menor \(R_{eq}\), mayor corriente total y mayor potencia disipada.</div>
+  <div class="grid2 ex-slot" data-q="43,44,45,46,47,48"></div><span class="pg">16</span></section>
+</div>
+
+<!-- =================================================================== PAUTA -->
+<section class="hoja" id="pauta">
+  <div class="bloque">PAUTA Y TABLA DE ESPECIFICACIONES</div>
+  <div class="nota">La tabla se completa sola a medida que respondes. Las preguntas en <span style="background:#cdebd9;padding:0 4px">verde</span> están correctas y las en <span style="background:#f5cccc;padding:0 4px">rojo</span> incorrectas: haz clic en el número para volver a la pregunta y revisar su resolución paso a paso.</div>
+  <div class="spec-box"><b>TABLA DE ESPECIFICACIONES · ¿EN QUÉ DEBO REFORZAR?</b><div class="scroll"><table id="spec"></table></div></div>
+  <button class="btn ghost" id="clave-btn">Mostrar / ocultar clave de respuestas</button> <button class="btn ghost" id="reset">Borrar mis respuestas</button>
+  <div id="clave" hidden></div>
+  <div class="cierre"><b>CIERRE · ¿QUÉ APRENDÍ?</b>
+    <ol><li>Explica con tus palabras la diferencia entre corriente, voltaje y resistencia, usando una analogía.</li>
+      <li>¿Por qué al agregar resistores en paralelo la corriente total aumenta, y en serie disminuye?</li>
+      <li>¿Por qué el aparato de mayor potencia no siempre es el que más energía consume?</li>
+      <li>Anota un error que corregiste y la estrategia que usarás para evitarlo en la PAES.</li></ol>
+    <b>Autoevaluación:</b> marca logrado / en proceso / necesito apoyo para: aplicar la ley de Ohm y la ley de nodos; interpretar amperímetros y voltímetros; resolver circuitos serie, paralelo y mixtos; calcular potencia, energía, costo y eficiencia; explicar las funciones de la instalación domiciliaria; identificar hipótesis y variables; evaluar la validez de una investigación; elegir recursos para comunicar.</div>
+  <span class="pg">17</span>
+</section>
+
+<script>const EX = [{"n": 1, "hab": "Procesar y analizar la evidencia", "ans": "B", "kind": "alts", "stem": "Por un conductor circula una corriente constante de \\(0{,}5\\un{A}\\) durante \\(2\\) minutos. ¿Cuánta carga atravesó una sección del conductor en ese tiempo?", "alts": ["\\(1\\un{C}\\)", "\\(60\\un{C}\\)", "\\(240\\un{C}\\)", "\\(0{,}25\\un{C}\\)"], "steps": ["<b>Identifica los datos.<\/b> Corriente \\(I=0{,}5\\un{A}\\) y tiempo \\(t=2\\un{min}\\). Se pide la carga \\(Q\\).", "<b>Elige la relación.<\/b> La corriente es la carga que pasa por segundo: \\(I=\\dfrac{Q}{t}\\Rightarrow Q=I\\cdot t\\).", "<b>Convierte unidades.<\/b> En el SI el tiempo va en segundos: \\(t=2\\cdot60=120\\un{s}\\).", "<b>Calcula.<\/b> \\(Q=0{,}5\\un{A}\\cdot120\\un{s}=60\\un{C}\\).", "<b>Respuesta: B<\/b>, \\(60\\un{C}\\)."], "fb": {"A": "Usaste \\(t=2\\) sin convertir los minutos a segundos.", "C": "Revisa la multiplicación: \\(0{,}5\\cdot120=60\\).", "D": "Dividiste \\(0{,}5\\) entre \\(2\\); la carga se obtiene multiplicando \\(I\\cdot t\\)."}}, {"n": 2, "hab": "Procesar y analizar la evidencia", "ans": "D", "kind": "alts", "stem": "Por una sección de un cable pasa una carga total de \\(3{,}2\\un{C}\\). ¿Cuántos electrones atravesaron esa sección? (\\(e=1{,}6\\cdot10^{-19}\\un{C}\\))", "alts": ["\\(5{,}12\\cdot10^{-19}\\)", "\\(5\\cdot10^{-20}\\)", "\\(3{,}2\\cdot10^{19}\\)", "\\(2\\cdot10^{19}\\)"], "steps": ["<b>Datos.<\/b> Carga total \\(Q=3{,}2\\un{C}\\); carga de un electrón \\(e=1{,}6\\cdot10^{-19}\\un{C}\\). Se pide el número de electrones \\(n\\).", "<b>Relación.<\/b> La carga total es \\(n\\) veces la carga de un electrón: \\(Q=n\\cdot e\\Rightarrow n=\\dfrac{Q}{e}\\).", "<b>Divide las mantisas y resta los exponentes.<\/b> \\(n=\\dfrac{3{,}2}{1{,}6\\cdot10^{-19}}=\\dfrac{3{,}2}{1{,}6}\\cdot10^{19}=2\\cdot10^{19}\\).", "<b>Control de sentido.<\/b> Cada electrón tiene una carga muy pequeña, así que deben pasar <i>muchísimos<\/i>: un exponente positivo grande tiene sentido.", "<b>Respuesta: D<\/b>, \\(2\\cdot10^{19}\\) electrones."], "fb": {"A": "Multiplicaste \\(Q\\cdot e\\); hay que dividir \\(Q\\) entre \\(e\\).", "B": "Dividiste al revés (\\(e/Q\\)): eso daría una fracción de electrón.", "C": "Copiaste la mantisa \\(3{,}2\\) sin dividir por \\(1{,}6\\)."}}, {"n": 3, "hab": "Conocimiento · Corriente como flujo de cargas", "ans": "B", "kind": "altl", "stem": "En un cable de cobre conectado a una pila, la corriente eléctrica corresponde al movimiento de", "alts": ["protones, desde el polo positivo hacia el negativo.", "electrones libres, desde el polo negativo hacia el positivo por el circuito externo.", "electrones libres, desde el polo positivo hacia el negativo por el circuito externo.", "iones positivos y negativos, en sentidos opuestos."], "steps": ["<b>¿Qué partículas pueden moverse en un metal?<\/b> Los protones están fijos en los núcleos; en el cobre se mueven los <b>electrones libres<\/b>.", "<b>¿Hacia dónde?<\/b> Los electrones (negativos) son repelidos por el polo negativo y atraídos por el positivo: por el circuito externo van de \\(-\\) a \\(+\\).", "<b>No confundir.<\/b> El <i>sentido convencional<\/i> (\\(+\\to-\\)) es un acuerdo histórico, no el movimiento real de los electrones.", "<b>Respuesta: B.<\/b>"], "fb": {"A": "Los protones no se desplazan: están en los núcleos de los átomos.", "C": "Ese es el sentido convencional, no el movimiento real de los electrones.", "D": "Los iones se mueven en soluciones (electrolitos), no en un cable metálico."}}, {"n": 4, "hab": "Planificar y conducir una investigación", "ans": "B", "kind": "altl", "stem": "Un estudiante quiere medir la corriente que pasa por el resistor \\(R\\) y el voltaje entre sus extremos. ¿Qué instrumentos deben ubicarse en las posiciones X e Y?", "alts": ["X: voltímetro;  Y: amperímetro.", "X: amperímetro;  Y: voltímetro.", "X: amperímetro;  Y: amperímetro.", "X: voltímetro;  Y: óhmetro."], "steps": ["<b>Observa la posición de X.<\/b> Está intercalado en el único camino de la corriente: es una conexión en <b>serie<\/b>.", "<b>Observa la posición de Y.<\/b> Está conectado a los dos extremos del resistor \\(R\\): es una conexión en <b>paralelo<\/b>.", "<b>Asocia.<\/b> En serie va el amperímetro (toda la corriente debe atravesarlo); en paralelo, el voltímetro (compara el potencial de dos puntos).", "<b>Respuesta: B.<\/b> X: amperímetro; Y: voltímetro."], "fb": {"A": "Están intercambiados: el voltímetro en serie casi anularía la corriente.", "C": "Un amperímetro en paralelo cortocircuitaría al resistor.", "D": "El óhmetro se usa con el elemento desconectado de la fuente."}}, {"n": 5, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "alts", "stem": "Por el filamento de una ampolleta pasan \\(1{,}25\\cdot10^{19}\\) electrones cada segundo. ¿Cuál es la intensidad de la corriente?", "alts": ["\\(0{,}2\\un{A}\\)", "\\(1{,}25\\un{A}\\)", "\\(2\\un{A}\\)", "\\(7{,}8\\cdot10^{37}\\un{A}\\)"], "steps": ["<b>Datos.<\/b> Cada segundo pasan \\(n=1{,}25\\cdot10^{19}\\) electrones, es decir, en \\(t=1\\un{s}\\).", "<b>Carga que pasa en 1 s.<\/b> \\(Q=n\\cdot e=1{,}25\\cdot10^{19}\\cdot1{,}6\\cdot10^{-19}\\un{C}\\).", "<b>Multiplica.<\/b> \\(1{,}25\\cdot1{,}6=2\\) y \\(10^{19}\\cdot10^{-19}=10^0=1\\). Entonces \\(Q=2\\un{C}\\).", "<b>Corriente.<\/b> \\(I=\\dfrac{Q}{t}=\\dfrac{2\\un{C}}{1\\un{s}}=2\\un{A}\\).", "<b>Respuesta: C.<\/b>"], "fb": {"A": "Revisa la multiplicación de las mantisas: \\(1{,}25\\cdot1{,}6=2\\).", "B": "Tomaste solo la mantisa del número de electrones.", "D": "Dividiste \\(n\\) entre \\(e\\); hay que multiplicar."}}, {"n": 6, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "El gráfico muestra la carga total \\(Q\\) que ha pasado por un conductor en función del tiempo \\(t\\). ¿Cuál es la corriente?", "alts": ["\\(0{,}5\\un{A}\\)", "\\(2\\un{A}\\)", "\\(8\\un{A}\\)", "\\(4\\un{A}\\)"], "steps": ["<b>¿Qué representa la pendiente?<\/b> En un gráfico de carga \\(Q\\) versus tiempo \\(t\\), la pendiente es \\(\\dfrac{\\Delta Q}{\\Delta t}\\), que es justamente la corriente \\(I\\).", "<b>Lee un punto claro de la recta.<\/b> La línea punteada marca \\(t=4\\un{s}\\) y \\(Q=2\\un{C}\\) (y la recta parte del origen).", "<b>Calcula.<\/b> \\(I=\\dfrac{2\\un{C}-0}{4\\un{s}-0}=0{,}5\\un{A}\\).", "<b>Respuesta: A.<\/b>"], "fb": {"B": "Invertiste el cociente: \\(t/Q\\) no es una corriente.", "C": "Multiplicaste \\(Q\\cdot t\\).", "D": "Leíste solo el tiempo del punto marcado."}}, {"n": 7, "hab": "Procesar y analizar la evidencia", "ans": "D", "kind": "alts", "stem": "Un resistor de \\(220\\ohm\\) se conecta a una fuente de \\(11\\un{V}\\). ¿Qué corriente circula por él?", "alts": ["\\(0{,}5\\un{A}\\)", "\\(20\\un{mA}\\)", "\\(2\\,420\\un{mA}\\)", "\\(50\\un{mA}\\)"], "steps": ["<b>Datos.<\/b> \\(R=220\\ohm\\), \\(V=11\\un{V}\\). Se pide \\(I\\).", "<b>Ley de Ohm.<\/b> \\(I=\\dfrac{V}{R}=\\dfrac{11}{220}\\).", "<b>Simplifica.<\/b> \\(\\dfrac{11}{220}=\\dfrac{1}{20}=0{,}05\\un{A}\\).", "<b>Convierte a miliampere.<\/b> \\(1\\un{A}=1\\,000\\un{mA}\\Rightarrow0{,}05\\un{A}=50\\un{mA}\\).", "<b>Respuesta: D.<\/b>"], "fb": {"A": "Error de un decimal: \\(11/220=0{,}05\\), no \\(0{,}5\\).", "B": "Calculaste \\(R/V=220/11=20\\): está invertido.", "C": "Multiplicaste \\(V\\cdot R\\); eso no es una corriente."}}, {"n": 8, "hab": "Procesar y analizar la evidencia", "ans": "B", "kind": "altl", "stem": "El gráfico muestra el voltaje \\(V\\) en función de la corriente \\(I\\) para dos resistores, A y B. ¿Qué afirmación es correcta?", "alts": ["La resistencia de A es \\(2\\ohm\\).", "La resistencia de A es el doble de la de B.", "Con el mismo voltaje, por A circula más corriente que por B.", "Ninguno de los dos resistores es óhmico."], "steps": ["<b>En un gráfico V vs I la pendiente es R.<\/b> Basta leer un punto de cada recta: \\(R=V/I\\).", "<b>Recta A.<\/b> Pasa por \\(I=2\\un{A}\\), \\(V=8\\un{V}\\): \\(R_A=\\dfrac{8}{2}=4\\ohm\\).", "<b>Recta B.<\/b> Pasa por \\(I=4\\un{A}\\), \\(V=8\\un{V}\\): \\(R_B=\\dfrac{8}{4}=2\\ohm\\).", "<b>Compara.<\/b> \\(R_A=4\\ohm=2\\cdot R_B\\): la resistencia de A es el doble. Ambas rectas pasan por el origen, por lo que ambos son óhmicos.", "<b>Respuesta: B.<\/b>"], "fb": {"A": "\\(2\\ohm\\) es la resistencia de B, no la de A.", "C": "Con el mismo voltaje, la mayor resistencia (A) deja pasar <b>menos<\/b> corriente.", "D": "Ambos gráficos son rectas que pasan por el origen: son óhmicos."}}, {"n": 9, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "altl", "stem": "Un grupo midió el voltaje y la corriente en un conductor:<br>\n<table><tr><td>\\(V\\) (V)<\/td><td>\\(0\\)<\/td><td>\\(3\\)<\/td><td>\\(6\\)<\/td><td>\\(9\\)<\/td><td>\\(12\\)<\/td><\/tr><tr><td>\\(I\\) (A)<\/td><td>\\(0\\)<\/td><td>\\(0{,}2\\)<\/td><td>\\(0{,}4\\)<\/td><td>\\(0{,}6\\)<\/td><td>\\(0{,}8\\)<\/td><\/tr><\/table><br>\n¿Qué conclusión es coherente con estos datos?", "alts": ["Es un conductor óhmico de \\(15\\ohm\\).", "Su resistencia aumenta al aumentar el voltaje.", "Es un conductor óhmico de \\(0{,}067\\ohm\\).", "No es óhmico, porque la corriente cambia."], "steps": ["<b>Calcula \\(R=V/I\\) en cada columna (sin el cero).<\/b> \\(\\dfrac{3}{0{,}2}=15\\), \\(\\dfrac{6}{0{,}4}=15\\), \\(\\dfrac{9}{0{,}6}=15\\), \\(\\dfrac{12}{0{,}8}=15\\).", "<b>Busca el patrón.<\/b> El cociente es <b>constante<\/b>: \\(V\\) e \\(I\\) son directamente proporcionales y el gráfico sería una recta por el origen.", "<b>Concluye.<\/b> Es un conductor óhmico de \\(15\\ohm\\).", "<b>Respuesta: A.<\/b>"], "fb": {"B": "El cociente \\(V/I\\) es constante: la resistencia no cambia.", "C": "Calculaste \\(I/V\\); la resistencia es \\(V/I\\).", "D": "Que la corriente cambie es esperable; lo importante es que \\(V/I\\) sea constante."}}, {"n": 10, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "altl", "stem": "Se midió el voltaje y la corriente en el filamento de una ampolleta:<br>\n<table><tr><td>\\(V\\) (V)<\/td><td>\\(2\\)<\/td><td>\\(4\\)<\/td><td>\\(6\\)<\/td><td>\\(8\\)<\/td><\/tr><tr><td>\\(I\\) (A)<\/td><td>\\(0{,}20\\)<\/td><td>\\(0{,}32\\)<\/td><td>\\(0{,}40\\)<\/td><td>\\(0{,}44\\)<\/td><\/tr><\/table><br>\n¿Qué inferencia es correcta?", "alts": ["El filamento es óhmico, porque la corriente aumenta con el voltaje.", "La resistencia del filamento disminuye al aumentar el voltaje.", "La resistencia del filamento aumenta al aumentar el voltaje, posiblemente porque aumenta su temperatura.", "La resistencia es constante e igual a \\(10\\ohm\\)."], "steps": ["<b>Calcula la resistencia en cada medición.<\/b> \\(\\dfrac{2}{0{,}20}=10\\ohm\\); \\(\\dfrac{4}{0{,}32}=12{,}5\\ohm\\); \\(\\dfrac{6}{0{,}40}=15\\ohm\\); \\(\\dfrac{8}{0{,}44}\\approx18{,}2\\ohm\\).", "<b>Tendencia.<\/b> La resistencia <b>aumenta<\/b> al aumentar el voltaje: no es constante, por lo que el filamento <b>no es óhmico<\/b>.", "<b>Explicación física.<\/b> A mayor voltaje, más corriente y más calor: el metal del filamento se calienta y su resistencia sube.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "La corriente aumenta, pero no de forma proporcional: \\(V/I\\) cambia.", "B": "Es al revés: \\(V/I\\) pasa de \\(10\\) a \\(18{,}2\\ohm\\).", "D": "\\(10\\ohm\\) solo corresponde a la primera medición."}}, {"n": 11, "hab": "Conocimiento · Resistencia de un conductor", "ans": "B", "kind": "alts", "stem": "Un alambre de cobre de longitud \\(L\\) y área transversal \\(A\\) tiene resistencia \\(R\\). Otro alambre de cobre, a la misma temperatura, tiene longitud \\(2L\\) y área \\(2A\\). Su resistencia es", "alts": ["\\(\\dfrac{R}{4}\\)", "\\(R\\)", "\\(2R\\)", "\\(4R\\)"], "steps": ["<b>Fórmula.<\/b> \\(R=\\rho\\,\\dfrac{L}{A}\\). Mismo material y temperatura \\(\\Rightarrow\\) mismo \\(\\rho\\).", "<b>Reemplaza los nuevos valores.<\/b> \\(R'=\\rho\\,\\dfrac{2L}{2A}\\).", "<b>Simplifica.<\/b> El 2 se cancela: \\(R'=\\rho\\,\\dfrac{L}{A}=R\\). Duplicar la longitud duplica \\(R\\), pero duplicar el área la reduce a la mitad.", "<b>Respuesta: B.<\/b>"], "fb": {"A": "Pusiste el factor 2 de la longitud en el denominador.", "C": "Consideraste solo el aumento de la longitud y olvidaste el área.", "D": "Multiplicaste ambos efectos en lugar de compensarlos."}}, {"n": 12, "hab": "Procesar y analizar la evidencia", "ans": "B", "kind": "alts", "stem": "Se midió la resistencia de alambres de nicromo del mismo grosor y distinta longitud:<br>\n<table><tr><td>\\(L\\) (cm)<\/td><td>\\(20\\)<\/td><td>\\(40\\)<\/td><td>\\(60\\)<\/td><td>\\(80\\)<\/td><\/tr><tr><td>\\(R\\) (\\(\\Omega\\))<\/td><td>\\(2\\)<\/td><td>\\(4\\)<\/td><td>\\(6\\)<\/td><td>\\(8\\)<\/td><\/tr><\/table><br>\nSi la tendencia se mantiene, ¿qué resistencia tendrá un alambre de \\(100\\un{cm}\\)?", "alts": ["\\(9\\ohm\\)", "\\(10\\ohm\\)", "\\(12\\ohm\\)", "\\(20\\ohm\\)"], "steps": ["<b>Busca la relación entre L y R.<\/b> Cada vez que \\(L\\) aumenta \\(20\\un{cm}\\), \\(R\\) aumenta \\(2\\ohm\\).", "<b>Comprueba la proporcionalidad.<\/b> \\(\\dfrac{R}{L}=\\dfrac{2}{20}=\\dfrac{4}{40}=\\dfrac{6}{60}=\\dfrac{8}{80}=0{,}1\\ohm/\\mathrm{cm}\\).", "<b>Predice.<\/b> \\(R=0{,}1\\cdot100=10\\ohm\\).", "<b>Respuesta: B.<\/b>"], "fb": {"A": "La tendencia aumenta \\(2\\ohm\\) cada \\(20\\un{cm}\\): de 80 a 100 cm se suman \\(2\\ohm\\).", "C": "Revisa la proporción: \\(0{,}1\\cdot100=10\\).", "D": "Duplicaste el último valor aunque la longitud no se duplicó."}}, {"n": 13, "hab": "Procesar y analizar la evidencia", "ans": "D", "kind": "alts", "stem": "En el circuito, ¿cuál es el voltaje entre los extremos de la resistencia de \\(4\\ohm\\)?", "alts": ["\\(24\\un{V}\\)", "\\(4\\un{V}\\)", "\\(12\\un{V}\\)", "\\(8\\un{V}\\)"], "steps": ["<b>Reconoce la conexión.<\/b> Las tres resistencias están en un solo camino: <b>serie<\/b>.", "<b>Resistencia equivalente.<\/b> \\(R_{eq}=2+4+6=12\\ohm\\).", "<b>Corriente (la misma en todas).<\/b> \\(I=\\dfrac{V}{R_{eq}}=\\dfrac{24}{12}=2\\un{A}\\).", "<b>Voltaje en la de \\(4\\ohm\\).<\/b> \\(V_4=I\\cdot R=2\\cdot4=8\\un{V}\\).", "<b>Comprueba (ley de mallas).<\/b> \\(V_2+V_4+V_6=4+8+12=24\\un{V}\\) ✓. <b>Respuesta: D.<\/b>"], "fb": {"A": "\\(24\\un{V}\\) es el voltaje total de la fuente: en serie se reparte.", "B": "Confundiste la resistencia (\\(4\\ohm\\)) con el voltaje.", "C": "\\(12\\un{V}\\) corresponde a la resistencia de \\(6\\ohm\\)."}}, {"n": 14, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "¿Cuál es la corriente total que entrega la fuente?", "alts": ["\\(6\\un{A}\\)", "\\(1{,}33\\un{A}\\)", "\\(4\\un{A}\\)", "\\(2\\un{A}\\)"], "steps": ["<b>Reconoce la conexión.<\/b> Las dos resistencias están conectadas entre los mismos dos nodos: <b>paralelo<\/b>. Cada una recibe los \\(12\\un{V}\\).", "<b>Corriente en cada rama.<\/b> \\(I_6=\\dfrac{12}{6}=2\\un{A}\\);\\ \\(I_3=\\dfrac{12}{3}=4\\un{A}\\).", "<b>Ley de nodos.<\/b> \\(I_T=I_6+I_3=2+4=6\\un{A}\\).", "<b>Otra vía.<\/b> \\(R_{eq}=\\dfrac{6\\cdot3}{6+3}=2\\ohm\\Rightarrow I_T=\\dfrac{12}{2}=6\\un{A}\\) ✓. <b>Respuesta: A.<\/b>"], "fb": {"B": "Sumaste las resistencias como si estuvieran en serie (\\(12/9\\)).", "C": "Es solo la corriente de la rama de \\(3\\ohm\\).", "D": "Es solo la corriente de la rama de \\(6\\ohm\\)."}}, {"n": 15, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "¿Qué corriente circula por la resistencia de \\(12\\ohm\\)?", "alts": ["\\(1\\un{A}\\)", "\\(2\\un{A}\\)", "\\(3\\un{A}\\)", "\\(0{,}5\\un{A}\\)"], "steps": ["<b>Reduce el paralelo.<\/b> \\(R_{6\\parallel12}=\\dfrac{6\\cdot12}{6+12}=\\dfrac{72}{18}=4\\ohm\\).", "<b>Suma en serie.<\/b> \\(R_{eq}=4+4=8\\ohm\\).", "<b>Corriente total.<\/b> \\(I_T=\\dfrac{24}{8}=3\\un{A}\\) (pasa completa por la de \\(4\\ohm\\)).", "<b>Voltaje del paralelo.<\/b> \\(V_{par}=I_T\\cdot R_{par}=3\\cdot4=12\\un{V}\\) (y \\(12\\un{V}\\) en la resistencia en serie: \\(12+12=24\\) ✓).", "<b>Corriente por la de \\(12\\ohm\\).<\/b> \\(I_{12}=\\dfrac{12}{12}=1\\un{A}\\). (Por la de \\(6\\ohm\\): \\(2\\un{A}\\); nodo: \\(1+2=3\\) ✓). <b>Respuesta: A.<\/b>"], "fb": {"B": "\\(2\\un{A}\\) es la corriente por la resistencia de \\(6\\ohm\\).", "C": "\\(3\\un{A}\\) es la corriente total.", "D": "Usaste los \\(24\\un{V}\\) completos o dividiste mal: el paralelo solo recibe \\(12\\un{V}\\)."}}, {"n": 16, "hab": "Conocimiento · Ley de Ohm en circuitos", "ans": "C", "kind": "altl", "stem": "Se tienen dos circuitos con tres ampolletas idénticas y la misma batería: en el circuito P están en serie y en el circuito Q están en paralelo. Si en cada circuito se quema una ampolleta, ¿qué ocurre con las otras dos?", "alts": ["En P y en Q se apagan.", "En P siguen encendidas; en Q se apagan.", "En P se apagan; en Q siguen encendidas con el mismo brillo.", "En P se apagan; en Q siguen encendidas, pero brillan menos."], "steps": ["<b>Circuito P (serie).<\/b> Hay un solo camino. Si una ampolleta se quema, ese camino se abre y no circula corriente: <b>todas se apagan<\/b>.", "<b>Circuito Q (paralelo).<\/b> Cada ampolleta tiene su propia rama conectada directamente a la batería.", "<b>Brillo en Q.<\/b> Cada rama sigue recibiendo el voltaje completo de la batería (ideal): la corriente y la potencia de las otras dos <b>no cambian<\/b>.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "En paralelo, las ramas son independientes.", "B": "Es al revés: en serie el camino se corta.", "D": "Con batería ideal, cada rama mantiene su voltaje y su brillo."}}, {"n": 17, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "alts", "stem": "A un circuito con dos resistores en paralelo, conectado a una fuente ideal, se le agrega un tercer resistor en paralelo. ¿Cuál(es) de las siguientes afirmaciones es (son) correcta(s)?", "alts": ["Solo I", "Solo III", "Solo I y II", "I, II y III"], "steps": ["<b>Afirmación I.<\/b> Al agregar una rama en paralelo hay más caminos: \\(\\dfrac{1}{R_{eq}}\\) aumenta, entonces \\(R_{eq}\\) <b>disminuye<\/b>. Verdadera.", "<b>Afirmación II.<\/b> \\(I_T=\\dfrac{V}{R_{eq}}\\): con \\(V\\) fijo y \\(R_{eq}\\) menor, la corriente total <b>aumenta<\/b>. Verdadera.", "<b>Afirmación III.<\/b> Las ramas en paralelo están conectadas directamente a la fuente ideal: su voltaje sigue siendo \\(V\\). Falsa.", "<b>Respuesta: C<\/b> (solo I y II)."], "fb": {"A": "La II también es correcta: la corriente total aumenta.", "B": "La III es falsa: el voltaje de cada rama no cambia.", "D": "La III es falsa: con fuente ideal, el voltaje de cada rama es el de la fuente."}, "afirm": ["La resistencia equivalente disminuye.", "La corriente total entregada por la fuente aumenta.", "El voltaje en cada uno de los primeros resistores disminuye."]}, {"n": 18, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "altl", "stem": "Dos ampolletas idénticas (de resistencia constante \\(R\\)) se conectan a la misma batería, primero en serie y luego en paralelo. Comparada con la conexión en serie, en la conexión en paralelo cada ampolleta", "alts": ["brilla igual, porque son idénticas.", "brilla más, porque disipa el doble de potencia.", "brilla más, porque disipa cuatro veces más potencia.", "brilla menos, porque la corriente se reparte."], "steps": ["<b>Serie.<\/b> Las dos ampolletas iguales se reparten el voltaje: cada una recibe \\(\\dfrac{V}{2}\\). Potencia: \\(P_s=\\dfrac{(V/2)^2}{R}=\\dfrac{V^2}{4R}\\).", "<b>Paralelo.<\/b> Cada una recibe el voltaje completo \\(V\\): \\(P_p=\\dfrac{V^2}{R}\\).", "<b>Compara.<\/b> \\(\\dfrac{P_p}{P_s}=\\dfrac{V^2/R}{V^2/(4R)}=4\\). En paralelo cada ampolleta disipa <b>4 veces<\/b> más potencia: brilla más.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "El brillo depende de la potencia, que cambia según la conexión.", "B": "El voltaje se duplica, pero la potencia depende de \\(V^2\\): se cuadruplica.", "D": "En paralelo la corriente total se reparte, pero cada ampolleta recibe más voltaje y más corriente que en serie."}}, {"n": 19, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "Un hervidor eléctrico tiene la etiqueta “\\(2\\,000\\un{W}\\) -- \\(220\\un{V}\\)”. ¿Qué corriente circula por él al funcionar normalmente?", "alts": ["Aprox. \\(9{,}1\\un{A}\\)", "Aprox. \\(0{,}11\\un{A}\\)", "\\(440\\,000\\un{A}\\)", "Aprox. \\(4{,}4\\un{A}\\)"], "steps": ["<b>Datos de la etiqueta.<\/b> \\(P=2\\,000\\un{W}\\), \\(V=220\\un{V}\\).", "<b>Relación.<\/b> \\(P=V\\cdot I\\Rightarrow I=\\dfrac{P}{V}\\).", "<b>Calcula.<\/b> \\(I=\\dfrac{2\\,000}{220}\\approx9{,}1\\un{A}\\).", "<b>Respuesta: A.<\/b>"], "fb": {"B": "Calculaste \\(V/P\\): está invertido.", "C": "Multiplicaste \\(P\\cdot V\\).", "D": "Revisa la división: \\(2\\,000/220\\approx9{,}1\\)."}}, {"n": 20, "hab": "Procesar y analizar la evidencia", "ans": "D", "kind": "alts", "stem": "Una ampolleta de \\(60\\un{W}\\) permanece encendida \\(5\\) horas diarias durante \\(30\\) días. Si el kWh cuesta \\(\\$200\\), ¿cuánto cuesta su consumo?", "alts": ["\\(\\$1\\,800\\,000\\)", "\\(\\$60\\)", "\\(\\$12\\,000\\)", "\\(\\$1\\,800\\)"], "steps": ["<b>Pasa la potencia a kW.<\/b> \\(60\\un{W}=0{,}06\\un{kW}\\).", "<b>Horas totales de uso.<\/b> \\(5\\un{h/día}\\cdot30\\un{días}=150\\un{h}\\).", "<b>Energía.<\/b> \\(E=P\\cdot t=0{,}06\\cdot150=9\\un{kWh}\\).", "<b>Costo.<\/b> \\(9\\un{kWh}\\cdot\\$200=\\$1\\,800\\).", "<b>Respuesta: D.<\/b>"], "fb": {"A": "Usaste Wh (\\(9\\,000\\)) en vez de kWh: el precio es por kilowatt-hora.", "B": "No tiene sentido multiplicar solo la potencia por un factor: falta el tiempo.", "C": "Multiplicaste \\(60\\cdot200\\) sin considerar el tiempo ni pasar a kW."}}, {"n": 21, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "Una ampolleta LED de \\(9\\un{W}\\) ilumina lo mismo que una incandescente de \\(60\\un{W}\\). ¿Cuánta energía se ahorra al usar la LED en lugar de la incandescente durante \\(1\\,000\\) horas?", "alts": ["\\(51\\un{kWh}\\)", "\\(69\\un{kWh}\\)", "\\(51\\,000\\un{kWh}\\)", "\\(5{,}1\\un{kWh}\\)"], "steps": ["<b>Diferencia de potencia.<\/b> \\(\\Delta P=60-9=51\\un{W}=0{,}051\\un{kW}\\).", "<b>Energía ahorrada.<\/b> \\(E=\\Delta P\\cdot t=0{,}051\\un{kW}\\cdot1\\,000\\un{h}=51\\un{kWh}\\).", "<b>Respuesta: A.<\/b>"], "fb": {"B": "Sumaste las potencias (\\(60+9\\)); el ahorro es la diferencia.", "C": "No convertiste W a kW: \\(51\\,000\\) son Wh.", "D": "Error de un decimal: \\(0{,}051\\cdot1\\,000=51\\)."}}, {"n": 22, "hab": "Conocimiento · Eficiencia energética", "ans": "A", "kind": "altl", "stem": "Un motor eléctrico consume \\(500\\un{W}\\) y entrega \\(400\\un{W}\\) de potencia mecánica. ¿Qué afirmación es correcta?", "alts": ["Su eficiencia es \\(80\\%\\) y los \\(100\\un{W}\\) restantes se transforman principalmente en calor.", "Su eficiencia es \\(125\\%\\), porque entrega más de lo que pierde.", "Su eficiencia es \\(20\\%\\), porque pierde \\(100\\un{W}\\).", "Su eficiencia es \\(80\\%\\) y los \\(100\\un{W}\\) restantes se destruyen."], "steps": ["<b>Eficiencia.<\/b> \\(\\eta=\\dfrac{P_{\\text{útil}}}{P_{\\text{consumida}}}\\cdot100\\%=\\dfrac{400}{500}\\cdot100\\%=80\\%\\).", "<b>¿Qué pasa con los \\(100\\un{W}\\) restantes?<\/b> La energía no se crea ni se destruye: se <b>transforma<\/b>, principalmente en calor (roce, calentamiento de los enrollados).", "<b>Respuesta: A.<\/b>"], "fb": {"B": "Ninguna máquina supera el \\(100\\%\\): eso violaría la conservación de la energía.", "C": "\\(20\\%\\) es la fracción perdida, no la eficiencia.", "D": "La energía no se destruye: se transforma."}}, {"n": 23, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "altl", "stem": "La tabla muestra la potencia y el uso diario de cuatro artefactos:<br>\n<table><tr><td><b>Artefacto<\/b><\/td><td><b>Potencia<\/b><\/td><td><b>Uso diario<\/b><\/td><\/tr><tr><td>Refrigerador<\/td><td>\\(150\\un{W}\\)<\/td><td>\\(24\\un{h}\\)<\/td><\/tr><tr><td>Hervidor<\/td><td>\\(2\\,000\\un{W}\\)<\/td><td>\\(15\\un{min}\\)<\/td><\/tr><tr><td>Televisor<\/td><td>\\(100\\un{W}\\)<\/td><td>\\(5\\un{h}\\)<\/td><\/tr><tr><td>Plancha<\/td><td>\\(1\\,200\\un{W}\\)<\/td><td>\\(1\\un{h}\\)<\/td><\/tr><\/table><br>\n¿Cuál consume <b>más energía<\/b> al día?", "alts": ["El hervidor, porque tiene la mayor potencia.", "La plancha, porque combina alta potencia con una hora de uso.", "El refrigerador.", "El televisor y el hervidor consumen lo mismo, y más que los otros."], "steps": ["<b>La energía depende de la potencia y del tiempo:<\/b> \\(E=P\\cdot t\\). Pasa todo a kW y horas.", "<b>Refrigerador.<\/b> \\(0{,}15\\cdot24=3{,}6\\un{kWh}\\).", "<b>Hervidor.<\/b> \\(15\\un{min}=0{,}25\\un{h}\\): \\(2\\cdot0{,}25=0{,}5\\un{kWh}\\).", "<b>Televisor.<\/b> \\(0{,}1\\cdot5=0{,}5\\un{kWh}\\). <b>Plancha.<\/b> \\(1{,}2\\cdot1=1{,}2\\un{kWh}\\).", "<b>Compara.<\/b> El mayor consumo es el del refrigerador, aunque tiene una de las potencias más bajas. <b>Respuesta: C.<\/b>"], "fb": {"A": "Mayor potencia no implica mayor energía: el hervidor se usa solo 15 minutos.", "B": "La plancha consume \\(1{,}2\\un{kWh}\\), menos que el refrigerador (\\(3{,}6\\un{kWh}\\)).", "D": "Consumen lo mismo (\\(0{,}5\\un{kWh}\\)), pero son los que menos consumen."}}, {"n": 24, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "alts", "stem": "Dos resistores, de \\(2\\ohm\\) y de \\(4\\ohm\\), se conectan a una misma fuente, primero en serie y luego en paralelo. ¿Cuál(es) de las siguientes afirmaciones es (son) correcta(s)?", "alts": ["Solo I", "Solo II", "Solo I y III", "Solo II y III"], "steps": ["<b>I. En serie<\/b> la corriente es la misma: usa \\(P=I^2R\\). Disipa más la de mayor \\(R\\) (\\(4\\ohm\\)). Verdadera.", "<b>II. En paralelo<\/b> el voltaje es el mismo: usa \\(P=\\dfrac{V^2}{R}\\). Disipa más la de <b>menor<\/b> \\(R\\) (\\(2\\ohm\\)). Falsa.", "<b>III. En paralelo<\/b> \\(I=\\dfrac{V}{R}\\): \\(I_2=\\dfrac{V}{2}\\) e \\(I_4=\\dfrac{V}{4}\\). La de \\(2\\ohm\\) lleva el doble. Verdadera.", "<b>Respuesta: C<\/b> (solo I y III)."], "fb": {"A": "La III también es correcta.", "B": "La II es falsa: en paralelo disipa más la menor resistencia.", "D": "La II es falsa y la I es verdadera."}, "afirm": ["En serie, el resistor de \\(4\\ohm\\) disipa más potencia que el de \\(2\\ohm\\).", "En paralelo, el resistor de \\(4\\ohm\\) disipa más potencia que el de \\(2\\ohm\\).", "En paralelo, la corriente por el resistor de \\(2\\ohm\\) es el doble que por el de \\(4\\ohm\\)."]}, {"n": 25, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "Dos refrigeradores del mismo tamaño tienen etiquetas de eficiencia energética distintas. El de categoría A consume \\(250\\un{kWh}\\) al año y el de categoría D consume \\(450\\un{kWh}\\) al año. Con \\(\\$200\\) por kWh, ¿cuánto se ahorra al año con el de categoría A?", "alts": ["\\(\\$40\\,000\\)", "\\(\\$50\\,000\\)", "\\(\\$90\\,000\\)", "\\(\\$140\\,000\\)"], "steps": ["<b>Diferencia de consumo anual.<\/b> \\(450-250=200\\un{kWh}\\).", "<b>Ahorro en dinero.<\/b> \\(200\\un{kWh}\\cdot\\$200=\\$40\\,000\\).", "<b>Respuesta: A.<\/b>"], "fb": {"B": "\\(\\$50\\,000\\) es el costo total del refrigerador A, no el ahorro.", "C": "\\(\\$90\\,000\\) es el costo total del refrigerador D.", "D": "Sumaste ambos consumos; el ahorro es la diferencia."}}, {"n": 26, "hab": "Conocimiento · Instalación domiciliaria", "ans": "D", "kind": "altl", "stem": "¿Cuál es la función principal del interruptor automático (disyuntor termomagnético) del tablero eléctrico?", "alts": ["Registrar la energía consumida en kWh.", "Aumentar el voltaje cuando se conectan muchos aparatos.", "Transformar la corriente alterna en continua.", "Cortar la corriente cuando hay una sobrecarga o un cortocircuito, protegiendo la instalación."], "steps": ["<b>Recuerda la función de cada componente.<\/b> Medidor: registra la energía. Automático (disyuntor termomagnético): protege los cables y la instalación.", "<b>¿Cuándo actúa?<\/b> Corta la corriente si supera el valor permitido (sobrecarga) o si hay un cortocircuito. Luego se rearma manualmente.", "<b>Respuesta: D.<\/b>"], "fb": {"A": "Esa es la función del medidor.", "B": "Ningún dispositivo del tablero aumenta el voltaje.", "C": "La instalación domiciliaria funciona con corriente alterna; el automático no la transforma."}}, {"n": 27, "hab": "Conocimiento · Instalación domiciliaria", "ans": "B", "kind": "altl", "stem": "Una persona toca accidentalmente un cable energizado y una pequeña corriente pasa por su cuerpo hacia tierra. El dispositivo diseñado para detectar esta situación y cortar rápidamente la corriente es", "alts": ["el medidor.", "el protector diferencial, que detecta la diferencia entre la corriente que va por la fase y la que vuelve por el neutro.", "el interruptor de la luz.", "el empalme."], "steps": ["<b>Analiza la situación.<\/b> Parte de la corriente se desvía por la persona hacia tierra: la corriente que va por la fase ya no es igual a la que vuelve por el neutro.", "<b>¿Qué dispositivo detecta esa diferencia?<\/b> El protector <b>diferencial<\/b>: compara ambas corrientes y corta en milésimas de segundo (desde unos \\(30\\un{mA}\\)).", "<b>Respuesta: B.<\/b>"], "fb": {"A": "El medidor solo registra la energía consumida.", "C": "El interruptor de la luz se acciona manualmente; no detecta fugas.", "D": "El empalme solo conecta la casa con la red."}}, {"n": 28, "hab": "Conocimiento · Instalación domiciliaria", "ans": "C", "kind": "altl", "stem": "¿Por qué los enchufes y artefactos de una casa se conectan en paralelo y no en serie?", "alts": ["Para que la corriente sea la misma en todos los artefactos.", "Para que el voltaje de \\(220\\un{V}\\) se reparta entre los artefactos.", "Para que cada artefacto reciba el mismo voltaje y funcione de forma independiente de los demás.", "Para que la resistencia equivalente de la casa aumente y se consuma menos energía."], "steps": ["<b>Recuerda el paralelo.<\/b> Todos los elementos en paralelo reciben el mismo voltaje, y cada rama funciona independientemente.", "<b>Aplícalo a la casa.<\/b> Cada artefacto recibe los \\(220\\un{V}\\) para los que fue diseñado, y apagar uno no apaga los demás.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "La corriente igual en todos es característica de la serie, no del paralelo.", "B": "Si el voltaje se repartiera, ningún artefacto recibiría sus \\(220\\un{V}\\).", "D": "En paralelo la resistencia equivalente disminuye, no aumenta."}}, {"n": 29, "hab": "Procesar y analizar la evidencia", "ans": "B", "kind": "altl", "stem": "Un circuito de enchufes de \\(220\\un{V}\\) está protegido por un automático de \\(10\\un{A}\\). ¿Con cuál de las siguientes combinaciones, conectadas al mismo tiempo, <b>saltará<\/b> el automático?", "alts": ["Televisor (\\(120\\un{W}\\)), refrigerador (\\(150\\un{W}\\)) y \\(5\\) ampolletas LED de \\(10\\un{W}\\).", "Hervidor (\\(2\\,000\\un{W}\\)) y plancha (\\(1\\,200\\un{W}\\)).", "Microondas (\\(1\\,100\\un{W}\\)) y tostador (\\(800\\un{W}\\)).", "Plancha (\\(1\\,200\\un{W}\\)) y televisor (\\(120\\un{W}\\))."], "steps": ["<b>Potencia máxima del circuito.<\/b> \\(P_{\\max}=V\\cdot I_{\\max}=220\\cdot10=2\\,200\\un{W}\\).", "<b>Suma las potencias de cada combinación<\/b> (están en paralelo, las corrientes se suman). A: \\(120+150+50=320\\un{W}\\). B: \\(2\\,000+1\\,200=3\\,200\\un{W}\\).", "C: \\(1\\,100+800=1\\,900\\un{W}\\). D: \\(1\\,200+120=1\\,320\\un{W}\\).", "<b>Compara.<\/b> Solo B supera \\(2\\,200\\un{W}\\): \\(I=\\dfrac{3\\,200}{220}\\approx14{,}5\\un{A}>10\\un{A}\\). <b>Respuesta: B.<\/b>"], "fb": {"A": "Suman solo \\(320\\un{W}\\): muy por debajo del límite.", "C": "Suman \\(1\\,900\\un{W}\\) (\\(8{,}6\\un{A}\\)), bajo los \\(10\\un{A}\\).", "D": "Suman \\(1\\,320\\un{W}\\) (\\(6\\un{A}\\)), bajo los \\(10\\un{A}\\)."}}, {"n": 30, "hab": "Conocimiento · Instalación domiciliaria", "ans": "B", "kind": "altl", "stem": "Una lavadora tiene carcasa metálica y está conectada a un enchufe con conexión a tierra. Si un cable interno toca la carcasa, la conexión a tierra", "alts": ["aumenta el voltaje de la carcasa para que la lavadora funcione mejor.", "conduce la corriente de fuga a tierra, evitando que una persona que toque la carcasa reciba una descarga peligrosa.", "almacena la carga eléctrica sobrante.", "transforma la corriente de fuga en energía útil."], "steps": ["<b>Situación de falla.<\/b> Un cable con fase toca la carcasa metálica: la carcasa queda energizada.", "<b>Rol de la tierra.<\/b> Ofrece un camino de muy baja resistencia hacia tierra: la corriente de fuga se va por ahí y no por el cuerpo de una persona (además, hace actuar las protecciones).", "<b>Respuesta: B.<\/b>"], "fb": {"A": "La tierra no aumenta el voltaje ni mejora el funcionamiento.", "C": "La tierra no almacena carga: la conduce.", "D": "No transforma la corriente en energía útil; es un camino de seguridad."}}, {"n": 31, "hab": "Observar y plantear preguntas", "ans": "D", "kind": "altl", "stem": "Tomás observa que el cargador de su notebook se calienta más cuando usa el computador al mismo tiempo que lo carga. ¿Cuál de las siguientes preguntas puede responderse mediante una investigación científica?", "alts": ["¿Es mejor cargar el notebook apagado?", "¿Qué marca de cargador es la más bonita?", "¿Deberían prohibirse los cargadores que se calientan?", "¿Cómo influye la corriente que circula por el cargador en su temperatura?"], "steps": ["<b>¿Qué hace investigable a una pregunta?<\/b> Debe poder responderse con <b>datos medibles<\/b>, relacionando variables.", "<b>Revisa cada opción.<\/b> “Mejor”, “bonita” y “deberían prohibirse” son juicios de valor u opiniones.", "<b>La opción D<\/b> relaciona dos variables medibles: la corriente (amperímetro) y la temperatura (termómetro).", "<b>Respuesta: D.<\/b>"], "fb": {"A": "“Mejor” es un juicio: no indica qué variable medir.", "B": "La belleza no es una variable medible científicamente.", "C": "Es una pregunta ética o normativa, no investigable experimentalmente."}}, {"n": 32, "hab": "Observar y plantear preguntas", "ans": "C", "kind": "altl", "stem": "Para el problema “¿influye la longitud de un alambre de nicromo en su resistencia eléctrica?”, ¿cuál de las siguientes es una hipótesis?", "alts": ["¿La resistencia depende de la longitud del alambre?", "La resistencia se mide con un óhmetro.", "A mayor longitud del alambre, mayor es su resistencia eléctrica.", "El nicromo es un material conductor."], "steps": ["<b>Diferencia pregunta e hipótesis.<\/b> La pregunta termina en “?”. La hipótesis es una <b>afirmación tentativa<\/b> que responde el problema y se puede poner a prueba.", "<b>Revisa.<\/b> A es una pregunta. B y D son afirmaciones verdaderas, pero no responden al problema (relación longitud–resistencia).", "<b>C<\/b> propone una relación entre las variables del problema y se puede comprobar midiendo.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "Es una pregunta, no una hipótesis.", "B": "Describe un instrumento; no responde al problema.", "D": "Es un hecho, no una explicación tentativa de la relación investigada."}}, {"n": 33, "hab": "Planificar y conducir una investigación", "ans": "D", "kind": "altl", "stem": "Una estudiante investiga cómo cambia la corriente total de un circuito al conectar \\(1\\), \\(2\\), \\(3\\) y \\(4\\) ampolletas idénticas en serie a la misma batería. ¿Cuáles son sus variables?", "alts": ["VI: corriente; VD: número de ampolletas; controlada: batería.", "VI: batería; VD: corriente; controlada: número de ampolletas.", "VI: tipo de ampolleta; VD: brillo; controlada: número de ampolletas.", "VI: número de ampolletas; VD: corriente total; controladas: batería y tipo de ampolleta."], "steps": ["<b>Variable independiente:<\/b> lo que la estudiante cambia a propósito: el <b>número de ampolletas<\/b> (1, 2, 3, 4).", "<b>Variable dependiente:<\/b> lo que mide como respuesta: la <b>corriente total<\/b>.", "<b>Variables controladas:<\/b> lo que mantiene igual: la batería y el tipo de ampolleta.", "<b>Respuesta: D.<\/b>"], "fb": {"A": "Están invertidas la VI y la VD.", "B": "La batería se mantiene constante (es controlada).", "C": "No se varía el tipo de ampolleta ni se mide el brillo."}}, {"n": 34, "hab": "Planificar y conducir una investigación", "ans": "A", "kind": "altl", "stem": "Para comprobar experimentalmente la ley de Ohm en un resistor, ¿qué procedimiento es el más adecuado?", "alts": ["Variar el voltaje de la fuente y medir, para cada valor, el voltaje con un voltímetro en paralelo y la corriente con un amperímetro en serie.", "Medir una sola vez la corriente con un voltímetro en serie.", "Medir la resistencia con el óhmetro mientras el circuito está conectado a la fuente.", "Cambiar el resistor por otros de distinto material y medir su temperatura."], "steps": ["<b>¿Qué afirma la ley de Ohm?<\/b> Que \\(V\\) e \\(I\\) son proporcionales. Para comprobarlo hay que obtener <b>varios pares<\/b> \\((V,I)\\).", "<b>Instrumentos y conexiones.<\/b> Voltímetro en paralelo con el resistor; amperímetro en serie.", "<b>Procedimiento.<\/b> Variar el voltaje de la fuente, registrar \\(V\\) e \\(I\\) y graficar: si es una recta por el origen, se cumple la ley.", "<b>Respuesta: A.<\/b>"], "fb": {"B": "Una sola medición no permite ver una relación, y el voltímetro no mide corriente.", "C": "El óhmetro debe usarse con el circuito desconectado.", "D": "Ese procedimiento investiga otras variables (material, temperatura)."}}, {"n": 35, "hab": "Planificar y conducir una investigación", "ans": "C", "kind": "altl", "stem": "Un grupo mide la potencia consumida por un cargador de celular durante la carga, usando cargadores de \\(5\\un{W}\\), \\(10\\un{W}\\) y \\(20\\un{W}\\) con el mismo celular, y registra el tiempo que tarda en cargarse del \\(20\\%\\) al \\(80\\%\\). ¿Cuál es el objetivo de esta investigación?", "alts": ["Demostrar que los cargadores de \\(20\\un{W}\\) son los mejores.", "Medir la batería del celular.", "Determinar la relación entre la potencia del cargador y el tiempo de carga del celular.", "Comprobar que el celular se calienta al cargarse."], "steps": ["<b>Identifica las variables.<\/b> Se cambia la potencia del cargador (VI) y se mide el tiempo de carga (VD).", "<b>Un objetivo<\/b> se redacta con un verbo en infinitivo y menciona las variables: “Determinar la relación entre…”.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "Anticipa una conclusión y contiene un juicio (“los mejores”).", "B": "No menciona la relación que se estudia.", "D": "La temperatura no se mide en esta investigación."}}, {"n": 36, "hab": "Planificar y conducir una investigación", "ans": "C", "kind": "altl", "stem": "¿Cuál de las siguientes evidencias <b>sustenta<\/b> que un resistor cumple la ley de Ohm?", "alts": ["El resistor se calienta al conectarlo.", "La corriente es la misma en todos los puntos del circuito.", "El gráfico de voltaje versus corriente es una recta que pasa por el origen.", "El resistor está hecho de un material conductor."], "steps": ["<b>¿Qué dice la ley?<\/b> \\(V=I\\cdot R\\) con \\(R\\) constante: \\(V\\) e \\(I\\) son directamente proporcionales.", "<b>¿Qué evidencia lo muestra?<\/b> Un gráfico \\(V\\) vs \\(I\\) que es una recta que pasa por el origen.", "<b>Respuesta: C.<\/b>"], "fb": {"A": "Calentarse ocurre en casi todos los conductores; no prueba la proporcionalidad.", "B": "Describe un circuito en serie, no la ley de Ohm.", "D": "Ser conductor no implica cumplir la ley de Ohm (una ampolleta conduce y no es óhmica)."}}, {"n": 37, "hab": "Procesar y analizar la evidencia", "ans": "B", "kind": "altl", "stem": "El gráfico muestra la resistencia de un alambre metálico a distintas temperaturas. ¿Qué conclusión es correcta?", "alts": ["La resistencia del alambre disminuye al aumentar la temperatura.", "La resistencia del alambre aumenta en forma lineal con la temperatura en el rango estudiado.", "La temperatura no influye en la resistencia.", "La resistencia se duplica al duplicar la temperatura."], "steps": ["<b>Lee los puntos.<\/b> \\(20^\\circ\\mathrm{C}\\to10\\ohm\\); \\(40^\\circ\\mathrm{C}\\to10{,}5\\ohm\\); \\(60^\\circ\\mathrm{C}\\to11\\ohm\\); \\(80^\\circ\\mathrm{C}\\to11{,}5\\ohm\\).", "<b>Tendencia.<\/b> \\(R\\) aumenta \\(0{,}5\\ohm\\) cada \\(20^\\circ\\mathrm{C}\\): crecimiento <b>lineal<\/b> (los puntos están sobre una recta).", "<b>¿Se duplica?<\/b> De \\(20\\) a \\(40^\\circ\\mathrm{C}\\) la temperatura se duplica, pero \\(R\\) pasa de \\(10\\) a \\(10{,}5\\ohm\\): no se duplica (la recta no pasa por el origen).", "<b>Respuesta: B.<\/b>"], "fb": {"A": "Es al revés: la resistencia aumenta.", "C": "La resistencia cambia con la temperatura.", "D": "Que sea lineal no significa que sea proporcional: la recta no pasa por el origen."}}, {"n": 38, "hab": "Evaluar", "ans": "D", "kind": "altl", "stem": "Un estudiante conectó <b>un<\/b> resistor de carbón a voltajes de \\(2\\), \\(4\\) y \\(6\\un{V}\\), midió la corriente una vez para cada voltaje y obtuvo una relación lineal. Concluyó: “<b>todos<\/b> los conductores cumplen la ley de Ohm”. ¿Qué se puede decir de esta conclusión?", "alts": ["Es correcta, porque obtuvo una relación lineal.", "Es incorrecta, porque la ley de Ohm no se cumple en resistores de carbón.", "Es correcta, pero debió usar un voltímetro en serie.", "Excede los alcances de la investigación, porque generaliza a todos los conductores a partir de uno solo."], "steps": ["<b>¿Qué se investigó?<\/b> Un solo resistor de carbón, con tres voltajes y una medición por voltaje.", "<b>¿Qué se concluyó?<\/b> Algo sobre <b>todos<\/b> los conductores.", "<b>Evaluación.<\/b> La conclusión excede los alcances: solo vale para ese resistor y esas condiciones (de hecho, las ampolletas no son óhmicas). Además, medir una vez reduce la confiabilidad.", "<b>Respuesta: D.<\/b>"], "fb": {"A": "La relación lineal vale para ese resistor, no para todos los conductores.", "B": "Los resistores de carbón suelen ser óhmicos, y el dato obtenido lo muestra.", "C": "El voltímetro va en paralelo; además, ese no es el problema principal."}}, {"n": 39, "hab": "Evaluar", "ans": "B", "kind": "altl", "stem": "Una investigación plantea la hipótesis: “a mayor temperatura de un alambre, mayor es su resistencia”. En el procedimiento, se miden alambres de <b>distinta longitud<\/b>, todos a temperatura ambiente. ¿Qué problema presenta esta investigación?", "alts": ["Ninguno: la hipótesis y el procedimiento son coherentes.", "El procedimiento no es coherente con la hipótesis, porque no varía la temperatura sino la longitud.", "La hipótesis está mal escrita, porque debería ser una pregunta.", "Falta usar un amperímetro en paralelo."], "steps": ["<b>Identifica la VI de la hipótesis:<\/b> la temperatura del alambre.", "<b>Identifica qué se varía en el procedimiento:<\/b> la longitud, a temperatura constante (ambiente).", "<b>Evalúa la coherencia.<\/b> El diseño no pone a prueba la hipótesis: estudia otra variable. Es un problema de coherencia entre hipótesis y procedimiento.", "<b>Respuesta: B.<\/b>"], "fb": {"A": "La hipótesis habla de temperatura y el diseño varía la longitud.", "C": "Una hipótesis es una afirmación: está bien redactada.", "D": "El amperímetro va en serie; además, no es el problema central."}}, {"n": 40, "hab": "Evaluar", "ans": "D", "kind": "altl", "stem": "Un grupo mide la corriente que circula por un resistor para distintos voltajes, realizando una sola medición en cada caso. ¿Qué modificación aumentaría la <b>confiabilidad<\/b> de sus resultados?", "alts": ["Cambiar el resistor en cada medición.", "Eliminar los datos que no coinciden con lo esperado.", "Medir la corriente con un voltímetro.", "Repetir varias veces cada medición y calcular el promedio."], "steps": ["<b>Confiabilidad:<\/b> que los resultados sean consistentes y no dependan de errores al azar.", "<b>Mejora.<\/b> Repetir cada medición varias veces y promediar reduce el efecto de los errores aleatorios.", "<b>Respuesta: D.<\/b>"], "fb": {"A": "Cambiar el resistor introduce otra variable: empeora la validez.", "B": "Eliminar datos “incómodos” es una mala práctica que invalida la investigación.", "C": "El voltímetro no mide corriente."}}, {"n": 41, "hab": "Evaluar · Aplicaciones tecnológicas", "ans": "A", "kind": "altl", "stem": "Las investigaciones sobre materiales semiconductores permitieron desarrollar los LED, que producen luz cuando circula corriente por ellos. ¿Cómo ha contribuido esta investigación a la tecnología?", "alts": ["Permitió fabricar ampolletas que transforman en luz una fracción mayor de la energía eléctrica, reduciendo el consumo.", "Permitió crear ampolletas con eficiencia del \\(100\\%\\).", "Eliminó la necesidad de usar electricidad para iluminar.", "Permitió aumentar el voltaje de la red domiciliaria."], "steps": ["<b>¿Qué aportan los LED?<\/b> Transforman en luz una fracción de la energía mucho mayor que las ampolletas incandescentes (que la pierden casi toda como calor).", "<b>Consecuencia tecnológica.<\/b> Menor potencia para la misma luz: menor consumo de energía.", "<b>Límite.<\/b> Ningún dispositivo alcanza el \\(100\\%\\) de eficiencia.", "<b>Respuesta: A.<\/b>"], "fb": {"B": "Ningún dispositivo real tiene eficiencia del \\(100\\%\\).", "C": "Los LED funcionan con electricidad.", "D": "El voltaje de la red no depende de las ampolletas."}}, {"n": 42, "hab": "Comunicar", "ans": "A", "kind": "altl", "stem": "Un grupo midió la corriente en tres resistores distintos para varios voltajes y quiere presentar cómo varía la corriente con el voltaje en cada uno, para compararlos. ¿Qué recurso es el más adecuado?", "alts": ["Un gráfico de líneas (o dispersión) de corriente versus voltaje, con una serie para cada resistor.", "Un gráfico circular para cada resistor.", "Un gráfico de barras con el voltaje máximo de cada resistor.", "Un párrafo que describa cada medición."], "steps": ["<b>Objetivo de la comunicación:<\/b> mostrar cómo varía una variable numérica (\\(I\\)) en función de otra (\\(V\\)) y comparar tres casos.", "<b>Recurso adecuado:<\/b> un gráfico de líneas o de dispersión de \\(I\\) vs \\(V\\), con una serie (color) para cada resistor: se ven las tres pendientes.", "<b>Respuesta: A.<\/b>"], "fb": {"B": "El gráfico circular muestra partes de un total, no una relación entre variables.", "C": "Mostraría un solo valor por resistor, no cómo varía la corriente.", "D": "Un párrafo es menos claro que un gráfico para mostrar tendencias."}}, {"n": 43, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "altl", "stem": "En el nodo de la figura se indican las corrientes de tres conductores. ¿Cuál es la intensidad \\(I\\) y en qué sentido circula?", "alts": ["\\(1\\un{A}\\), saliendo del nodo.", "\\(9\\un{A}\\), saliendo del nodo.", "\\(5\\un{A}\\), saliendo del nodo.", "\\(5\\un{A}\\), entrando al nodo."], "steps": ["<b>Ley de nodos.<\/b> \\(\\sum I_{\\text{entran}}=\\sum I_{\\text{salen}}\\).", "<b>Entran:<\/b> \\(4+3=7\\un{A}\\). <b>Sale<\/b> (conocida): \\(2\\un{A}\\).", "<b>Balance.<\/b> Para que salgan \\(7\\un{A}\\) en total, por el cuarto conductor deben salir \\(7-2=5\\un{A}\\).", "<b>Respuesta: C<\/b>: \\(5\\un{A}\\), saliendo del nodo."], "fb": {"A": "Restaste \\(4-3\\) o \\(3-2\\): debes sumar todas las que entran.", "B": "Sumaste todas las corrientes sin distinguir cuáles entran y cuáles salen.", "D": "Si entraran 5 A, entrarían 12 A y saldrían solo 2 A: no se cumple la ley de nodos."}}, {"n": 44, "hab": "Procesar y analizar la evidencia", "ans": "B", "kind": "alts", "stem": "En el circuito, los amperímetros son ideales. ¿Qué marcan A\\(_1\\) y A\\(_2\\)?", "alts": ["A\\(_1\\): \\(6\\un{A}\\); A\\(_2\\): \\(4\\un{A}\\)", "A\\(_1\\): \\(6\\un{A}\\); A\\(_2\\): \\(2\\un{A}\\)", "A\\(_1\\): \\(2\\un{A}\\); A\\(_2\\): \\(2\\un{A}\\)", "A\\(_1\\): \\(1{,}33\\un{A}\\); A\\(_2\\): \\(2\\un{A}\\)"], "steps": ["<b>Instrumentos ideales:<\/b> reemplaza cada amperímetro por un cable. Quedan \\(6\\ohm\\) y \\(3\\ohm\\) en paralelo con la fuente de \\(12\\un{V}\\).", "<b>¿Dónde está cada amperímetro?<\/b> A\\(_1\\) en la línea principal (corriente total); A\\(_2\\) en la rama de \\(6\\ohm\\).", "<b>Corrientes de rama.<\/b> \\(I_6=\\dfrac{12}{6}=2\\un{A}\\); \\(I_3=\\dfrac{12}{3}=4\\un{A}\\).", "<b>Ley de nodos.<\/b> A\\(_1\\) \\(=2+4=6\\un{A}\\); A\\(_2\\) \\(=2\\un{A}\\). <b>Respuesta: B.<\/b>"], "fb": {"A": "\\(4\\un{A}\\) circula por la rama de \\(3\\ohm\\), no por la de A\\(_2\\).", "C": "A\\(_1\\) mide la corriente total, que es la suma de ambas ramas.", "D": "Sumaste las resistencias como si estuvieran en serie para calcular A\\(_1\\)."}}, {"n": 45, "hab": "Procesar y analizar la evidencia", "ans": "D", "kind": "alts", "stem": "Inicialmente el interruptor S está abierto. Al <b>cerrar<\/b> S, ¿qué ocurre con la lectura del amperímetro y con el voltaje en \\(R_2\\), respectivamente?", "alts": ["aumenta; aumenta", "disminuye; aumenta", "no cambia; disminuye", "aumenta; disminuye"], "steps": ["<b>Antes de cerrar S:<\/b> solo \\(R_1\\) y \\(R_2\\) en serie: \\(R_{eq}=R_1+R_2\\).", "<b>Al cerrar S<\/b> se agrega \\(R_3\\) en paralelo con \\(R_2\\): \\(R_{2\\parallel3}<R_2\\), entonces \\(R_{eq}\\) <b>disminuye<\/b>.", "<b>Amperímetro.<\/b> \\(I_T=\\dfrac{V}{R_{eq}}\\) <b>aumenta<\/b>.", "<b>Voltaje en \\(R_2\\).<\/b> \\(V_1=I_T\\cdot R_1\\) aumenta, y por la ley de mallas \\(V_2=V-V_1\\) <b>disminuye<\/b>.", "<b>Respuesta: D<\/b>: aumenta; disminuye."], "fb": {"A": "Si \\(V_1\\) aumenta, a \\(R_2\\) le queda menos voltaje.", "B": "La resistencia equivalente baja, así que la corriente total sube.", "C": "Al agregar una rama cambia \\(R_{eq}\\) y, con ella, la corriente total."}}, {"n": 46, "hab": "Procesar y analizar la evidencia", "ans": "C", "kind": "altl", "stem": "Con tres ampolletas de igual resistencia y una misma batería de voltaje constante se arman los siguientes circuitos. ¿Cuál disipa la <b>mayor potencia total<\/b>?", "alts": [], "steps": ["<b>Clave:<\/b> la batería es la misma (\\(V\\) fijo), entonces \\(P_T=\\dfrac{V^2}{R_{eq}}\\). Gana la configuración de <b>menor<\/b> \\(R_{eq}\\).", "<b>A) Tres en serie:<\/b> \\(R_{eq}=3R\\).", "<b>B) Dos en paralelo + una en serie:<\/b> \\(R_{eq}=\\dfrac{R}{2}+R=1{,}5R\\).", "<b>D) Una en paralelo con dos en serie:<\/b> \\(R_{eq}=\\dfrac{R\\cdot2R}{R+2R}=\\dfrac{2R}{3}\\approx0{,}67R\\).", "<b>C) Tres en paralelo:<\/b> \\(R_{eq}=\\dfrac{R}{3}\\approx0{,}33R\\): la menor. Disipa \\(9\\) veces la potencia de la serie. <b>Respuesta: C.<\/b>"], "fb": {"A": "La serie tiene la mayor \\(R_{eq}\\) (\\(3R\\)): es la de <b>menor<\/b> potencia.", "B": "\\(R_{eq}=1{,}5R\\): todavía es mayor que en C.", "D": "\\(R_{eq}=\\tfrac{2}{3}R\\), mayor que \\(\\tfrac{1}{3}R\\) del paralelo."}}, {"n": 47, "hab": "Procesar y analizar la evidencia", "ans": "A", "kind": "alts", "stem": "Tres ampolletas idénticas, de resistencia constante, se conectan a una batería de \\(12\\un{V}\\). ¿Qué marca el voltímetro ideal conectado a las ampolletas en paralelo?", "alts": ["\\(4\\un{V}\\)", "\\(6\\un{V}\\)", "\\(8\\un{V}\\)", "\\(12\\un{V}\\)"], "steps": ["<b>Voltímetro ideal:<\/b> bórralo (rama abierta). Queda una ampolleta en serie con dos en paralelo.", "<b>Resistencia equivalente.<\/b> Paralelo: \\(\\dfrac{R}{2}\\). Total: \\(R_{eq}=R+\\dfrac{R}{2}=\\dfrac{3R}{2}\\).", "<b>Reparto del voltaje (serie).<\/b> El voltaje se reparte en proporción a las resistencias: \\(V_{par}=12\\cdot\\dfrac{R/2}{3R/2}=12\\cdot\\dfrac{1}{3}=4\\un{V}\\).", "<b>Comprueba.<\/b> La ampolleta en serie recibe \\(12\\cdot\\dfrac{R}{3R/2}=8\\un{V}\\); \\(8+4=12\\) ✓. El voltímetro está conectado al paralelo: <b>Respuesta: A<\/b>, \\(4\\un{V}\\)."], "fb": {"B": "Supusiste que el voltaje se reparte en partes iguales, pero las resistencias son distintas (\\(R\\) y \\(R/2\\)).", "C": "\\(8\\un{V}\\) es el voltaje de la ampolleta en serie.", "D": "\\(12\\un{V}\\) es el voltaje total de la batería."}}, {"n": 48, "hab": "Planificar y conducir una investigación", "ans": "D", "kind": "altl", "stem": "Un estudiante quiere medir la corriente que pasa por un resistor, pero conecta el amperímetro <b>en paralelo<\/b> con él. ¿Qué ocurre?", "alts": ["El amperímetro mide correctamente la corriente del resistor.", "El amperímetro mide el voltaje del resistor.", "No circula corriente por el amperímetro, porque su resistencia es muy grande.", "El amperímetro, de resistencia casi nula, deja al resistor prácticamente sin corriente y por él circula una corriente grande que puede dañarlo."], "steps": ["<b>Propiedad del amperímetro:<\/b> su resistencia es casi cero.", "<b>Conexión en paralelo con el resistor:<\/b> la corriente prefiere el camino de menor resistencia: casi toda pasa por el amperímetro y el resistor queda “puenteado” (cortocircuitado).", "<b>Consecuencia:<\/b> la corriente total puede volverse muy grande y dañar el instrumento. Por eso el amperímetro siempre va en serie.", "<b>Respuesta: D.<\/b>"], "fb": {"A": "Para medir la corriente de un elemento, el amperímetro debe ir en serie.", "B": "El amperímetro no mide voltaje.", "C": "Ese es el comportamiento de un voltímetro (resistencia muy grande)."}}];</script>
+<script>/* ===================== utilidades ===================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const fmt = (x, d = 2) => {
+  if (!isFinite(x)) return '∞';
+  const r = Math.round(x * 10 ** d) / 10 ** d;
+  let [i, f] = Math.abs(r).toFixed(d).split('.');
+  f = (f || '').replace(/0+$/, '');
+  i = i.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return (r < 0 ? '−' : '') + i + (f ? ',' + f : '');
+};
+const KATEX_MACROS = { '\\un': '\\,\\mathrm{#1}', '\\ohm': '\\,\\Omega' };
+function tex(el) {
+  if (window.renderMathInElement) renderMathInElement(el, {
+    delimiters: [{ left: '\\[', right: '\\]', display: true }, { left: '\\(', right: '\\)', display: false }],
+    macros: KATEX_MACROS, throwOnError: false
+  });
+}
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+
+/* ===================== dibujo de circuitos (SVG) ===================== */
+function ckt(els, { s = 46, pad = 28, cls = '' } = {}) {
+  const xs = [], ys = [];
+  els.forEach(e => { if (e[0] === 'dot' || e[0] === 'txt') { xs.push(e[1]); ys.push(e[2]); } else { xs.push(e[1], e[3]); ys.push(e[2], e[4]); } });
+  const minx = Math.min(...xs), maxx = Math.max(...xs), miny = Math.min(...ys), maxy = Math.max(...ys);
+  let padL = pad, padR = pad;
+  els.forEach(e => { const lab = e[5]; if (!lab || e[0] === 'txt') return; const w = String(lab).length * 6.8 + 20;
+    if (e[6] === 'w' && Math.min(e[1], e[3]) - minx < .3) padL = Math.max(padL, w);
+    if (e[6] === 'e' && maxx - Math.max(e[1], e[3]) < .3) padR = Math.max(padR, w);
+    if ((e[6] || 'n') === 'n' || e[6] === 's') { const hw = w / 2 - ((e[1] + e[3]) / 2 - minx) * s; padL = Math.max(padL, hw); const hw2 = w / 2 - (maxx - (e[1] + e[3]) / 2) * s; padR = Math.max(padR, hw2); } });
+  els.forEach(e => { if (e[0] === 'txt') { const w = String(e[3]).length * 3.6 + 8; padL = Math.max(padL, w - (e[1] - minx) * s); padR = Math.max(padR, w - (maxx - e[1]) * s); } });
+  const W = (maxx - minx) * s + padL + padR, H = (maxy - miny) * s + 2 * pad;
+  const X = x => (x - minx) * s + padL, Y = y => (maxy - y) * s + pad;
+  const ln = (a, b, c, d, st = '') => `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" ${st}/>`;
+  let out = '', top = '';
+  for (const e of els) {
+    const t = e[0];
+    if (t === 'dot') { top += `<circle cx="${X(e[1])}" cy="${Y(e[2])}" r="2.8" class="ck-dot"/>`; continue; }
+    if (t === 'txt') { top += `<text x="${X(e[1])}" y="${Y(e[2])}" class="ck-lab" text-anchor="${e[4] || 'middle'}">${e[3]}</text>`; continue; }
+    const x1 = X(e[1]), y1 = Y(e[2]), x2 = X(e[3]), y2 = Y(e[4]);
+    const lab = e[5], pos = e[6], o = e[7] || {};
+    if (t === 'w') { out += ln(x1, y1, x2, y2); continue; }
+    const len = Math.hypot(x2 - x1, y2 - y1), ang = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+    const L = Math.min(38, len - 4), mx = (x1 + x2) / 2, my = (y1 + y2) / 2, h = L / 2;
+    let sym = '', a0 = -h, a1 = h;
+    if (t === 'R') {
+      let p = `${-h},0 `; const n = 6;
+      for (let i = 0; i < n; i++) p += `${-h + (i + .5) * L / n},${i % 2 ? 6 : -6} `;
+      p += `${h},0`; sym = `<polyline points="${p}" fill="none"/>`;
+    } else if (t === 'bat') {
+      a0 = -3; a1 = 3; sym = ln(-3, -12, -3, 12) + ln(3, -6, 3, 6, 'stroke-width="3.2"');
+    } else if (t === 'lamp') {
+      a0 = -10; a1 = 10; const g = o.glow == null ? 0 : o.glow;
+      sym = (g > 0 ? `<circle r="${10 + 9 * g}" class="ck-glow" style="opacity:${.25 + .6 * g}"/>` : '') +
+        `<circle r="10" class="ck-lamp" style="fill:${o.off ? '#e8e8e8' : g > 0 ? `rgba(255,${200 - 40 * g},40,${.25 + .7 * g})` : '#fff'}"/>` +
+        ln(-7, -7, 7, 7) + ln(-7, 7, 7, -7) + (o.off ? ln(-13, 0, -10, 0) : '');
+    } else if (t === 'M') {
+      a0 = -10; a1 = 10; sym = `<circle r="10" fill="#fff"/>`;
+    } else if (t === 'sw') {
+      const closed = o.closed;
+      sym = `<circle cx="${-h + 2}" r="2.4" class="ck-dot"/><circle cx="${h - 2}" r="2.4" class="ck-dot"/>` +
+        (closed ? ln(-h + 2, 0, h - 2, 0) : ln(-h + 2, 0, h - 5, -12));
+      a0 = -h + 2; a1 = h - 2;
+    } else if (t === 'open') { a0 = -6; a1 = 6; sym = `<text y="4" text-anchor="middle" class="ck-x" transform="rotate(${-ang})">✕</text>`; }
+    out += `<g transform="translate(${mx},${my}) rotate(${ang})">${ln(-len / 2, 0, a0, 0)}${ln(a1, 0, len / 2, 0)}${sym}</g>`;
+    if (t === 'M') top += `<text x="${mx}" y="${my + 4}" text-anchor="middle" class="ck-m">${e[8] || 'A'}</text>`;
+    if (lab) {
+      const off = { n: [0, -16, 'middle'], s: [0, 24, 'middle'], e: [16, 5, 'start'], w: [-16, 5, 'end'] }[pos || 'n'];
+      top += `<text x="${mx + off[0]}" y="${my + off[1]}" text-anchor="${off[2]}" class="ck-lab">${lab}</text>`;
+    }
+  }
+  return `<svg class="ckt ${cls}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${out}${top}</svg>`;
+}
+
+/* ===================== gráficos simples (SVG) ===================== */
+function plot({ w = 230, h = 170, xmax, ymax, ymin = 0, xmin = 0, xt = [], yt = [], xl = '', yl = '', lines = [], pts = [], dash = [], curves = [] }) {
+  const L = 34, B = 26, T = 14, Rr = 30;
+  const X = x => L + (x - xmin) / (xmax - xmin) * (w - L - Rr), Y = y => h - B - (y - ymin) / (ymax - ymin) * (h - B - T);
+  let s = `<svg class="plt" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">`;
+  s += `<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#222"/></marker></defs>`;
+  s += `<line x1="${L}" y1="${h - B}" x2="${w - 10}" y2="${h - B}" class="ax" marker-end="url(#ar)"/>`;
+  s += `<line x1="${L}" y1="${h - B}" x2="${L}" y2="${T - 6}" class="ax" marker-end="url(#ar)"/>`;
+  s += `<text x="${w - 8}" y="${h - B + 18}" class="tk" text-anchor="end">${xl}</text><text x="${L + 4}" y="${T - 2}" class="tk">${yl}</text>`;
+  xt.forEach(([v, l]) => s += `<line x1="${X(v)}" y1="${h - B}" x2="${X(v)}" y2="${h - B + 4}" class="ax"/><text x="${X(v)}" y="${h - B + 14}" class="tk" text-anchor="middle">${l}</text>`);
+  yt.forEach(([v, l]) => s += `<line x1="${L - 4}" y1="${Y(v)}" x2="${L}" y2="${Y(v)}" class="ax"/><text x="${L - 6}" y="${Y(v) + 3}" class="tk" text-anchor="end">${l}</text>`);
+  dash.forEach(([a, b, c, d]) => s += `<line x1="${X(a)}" y1="${Y(b)}" x2="${X(c)}" y2="${Y(d)}" class="dsh"/>`);
+  lines.forEach(l => s += `<line x1="${X(l.p[0])}" y1="${Y(l.p[1])}" x2="${X(l.p[2])}" y2="${Y(l.p[3])}" stroke="${l.c}" stroke-width="2.4"/>` + (l.lab ? `<text x="${X(l.p[2]) + 4}" y="${Y(l.p[3]) + 2}" class="tk" fill="${l.c}">${l.lab}</text>` : ''));
+  curves.forEach(c => { s += `<polyline fill="none" stroke="${c.c}" stroke-width="2.4" points="${c.p.map(([x, y]) => X(x) + ',' + Y(y)).join(' ')}"/>` + (c.lab ? `<text x="${X(c.p.at(-1)[0]) - 4}" y="${Y(c.p.at(-1)[1]) - 5}" class="tk" text-anchor="end" fill="${c.c}">${c.lab}</text>` : ''); });
+  pts.forEach(([x, y, c]) => s += `<circle cx="${X(x)}" cy="${Y(y)}" r="3.6" fill="${c || '#be2828'}"/>`);
+  return s + '</svg>';
+}
+
+/* ===================== configuraciones de 3 ampolletas ===================== */
+const CFG = {
+  serie: [['bat', 0, 0, 0, 1.6], ['lamp', 0, 1.6, 1.5, 1.6], ['lamp', 1.5, 1.6, 3, 1.6], ['lamp', 3, 1.6, 3, 0], ['w', 3, 0, 0, 0]],
+  dosPar: [['bat', 0, 0, 0, 1.6], ['lamp', 0, 1.6, 1.6, 1.6], ['w', 1.6, 1.6, 1.8, 1.6], ['lamp', 1.8, 1.6, 1.8, 0], ['w', 1.8, 0, 0, 0], ['w', 1.8, 1.6, 3, 1.6], ['lamp', 3, 1.6, 3, 0], ['w', 3, 0, 1.8, 0], ['dot', 1.8, 1.6], ['dot', 1.8, 0]],
+  unaPar: [['bat', 0, 0, 0, 1.6], ['w', 0, 1.6, 1.1, 1.6], ['lamp', 1.1, 1.6, 1.1, 0], ['w', 1.1, 0, 0, 0], ['lamp', 1.1, 1.6, 2.7, 1.6], ['lamp', 2.7, 1.6, 2.7, 0], ['w', 2.7, 0, 1.1, 0], ['dot', 1.1, 1.6], ['dot', 1.1, 0]],
+  paralelo: [['bat', 0, 0, 0, 1.6], ['w', 0, 1.6, 1.1, 1.6], ['lamp', 1.1, 1.6, 1.1, 0], ['w', 1.1, 0, 0, 0], ['w', 1.1, 1.6, 2.1, 1.6], ['lamp', 2.1, 1.6, 2.1, 0], ['w', 2.1, 0, 1.1, 0], ['w', 2.1, 1.6, 3.1, 1.6], ['lamp', 3.1, 1.6, 3.1, 0], ['w', 3.1, 0, 2.1, 0], ['dot', 1.1, 1.6], ['dot', 1.1, 0], ['dot', 2.1, 1.6], ['dot', 2.1, 0]]
+};
+const cfgSVG = k => ckt(CFG[k], { s: 34, pad: 16 });
+
+/* ===================== figuras estáticas de la teoría ===================== */
+function nodeSVG(i1, i2, i3, i4, q) {
+  const arr = (x1, y1, x2, y2, c) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="2.4" marker-end="url(#a${c.slice(1)})"/>`;
+  const mk = c => `<marker id="a${c.slice(1)}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="${c}"/></marker>`;
+  const R = '#be2828', Bl = '#1e50b4';
+  const out4 = i4 !== null && i4 >= 0;
+  return `<svg viewBox="0 0 230 150" width="230" height="150" class="plt"><defs>${mk(R)}${mk(Bl)}</defs>
+  <g stroke="#111" stroke-width="3.2"><line x1="20" y1="20" x2="115" y2="75"/><line x1="20" y1="130" x2="115" y2="75"/><line x1="115" y1="75" x2="210" y2="20"/><line x1="115" y1="75" x2="210" y2="130"/></g>
+  <circle cx="115" cy="75" r="5" fill="#111"/>
+  ${arr(38, 18, 78, 41, R)}${arr(38, 132, 78, 109, R)}${arr(152, 41, 192, 18, Bl)}
+  ${i4 === null ? '' : out4 ? arr(152, 109, 192, 132, Bl) : arr(192, 132, 152, 109, R)}
+  <text x="30" y="12" class="tk" fill="${R}">${i1}</text><text x="30" y="148" class="tk" fill="${R}">${i2}</text>
+  <text x="178" y="12" class="tk" fill="${Bl}">${i3}</text><text x="182" y="148" class="tk" fill="${i4 === null ? '#111' : out4 ? Bl : R}">${q}</text>
+  <text x="115" y="98" class="tk" text-anchor="middle">nodo</text></svg>`;
+}
+
+/* ===================== componente "paso a paso" ===================== */
+function stepper(container, steps) {
+  container.innerHTML = `<ol class="steps"></ol><div class="stp-btns"><button class="btn sm nx">Siguiente paso ▸</button><button class="btn sm ghost al">Mostrar todo</button><button class="btn sm ghost rs">Reiniciar</button></div>`;
+  const ol = $('ol', container); let i = 0;
+  const show = () => {
+    ol.innerHTML = steps.slice(0, i).map((s, k) => `<li class="${k === i - 1 ? 'new' : ''}"><span class="sn">${k + 1}</span><div>${s}</div></li>`).join('');
+    tex(ol);
+    $('.nx', container).disabled = i >= steps.length; $('.al', container).disabled = i >= steps.length;
+    $('.nx', container).textContent = i === 0 ? 'Ver primer paso ▸' : i >= steps.length ? 'Resolución completa ✓' : 'Siguiente paso ▸';
+  };
+  $('.nx', container).onclick = () => { i = Math.min(steps.length, i + 1); show(); };
+  $('.al', container).onclick = () => { i = steps.length; show(); };
+  $('.rs', container).onclick = () => { i = 0; show(); };
+  show();
+}
+
+/* ===================== WIDGETS DE TEORÍA ===================== */
+function wCorriente() {
+  const el = $('#w-corriente'); if (!el) return;
+  const svg = $('svg', el), g = $('#electrones', el);
+  const N = 14, xs = Array.from({ length: N }, (_, k) => k * 300 / N), ys = xs.map((_, k) => 18 + (k * 37 % 30));
+  g.innerHTML = xs.map((x, k) => `<g class="e"><circle r="7" fill="#c9d6f3" stroke="#1e50b4"/><text y="3.5" text-anchor="middle" font-size="11" fill="#1e50b4" font-weight="700">−</text></g>`).join('');
+  const es = $$('.e', g);
+  let last = performance.now();
+  const sI = $('#ci', el), sT = $('#ct', el), out = $('#cout', el);
+  const upd = () => {
+    const I = +sI.value, t = +sT.value, Q = I * t, n = Q / 1.6e-19;
+    const [m, ex] = n.toExponential(2).split('e');
+    out.innerHTML = `\\(I=${fmt(I, 1)}\\un{A}\\), \\(t=${t}\\un{s}\\) \\(\\Rightarrow Q=I\\cdot t=${fmt(Q, 1)}\\un{C}\\) \\(\\Rightarrow n=\\dfrac{Q}{e}\\approx${m.replace('.', '{,}')}\\cdot10^{${+ex}}\\) electrones`;
+    tex(out);
+  };
+  sI.oninput = sT.oninput = upd; upd();
+  const loop = now => {
+    const dt = (now - last) / 1000; last = now; const v = +sI.value * 28;
+    for (let k = 0; k < N; k++) { xs[k] -= v * dt; if (xs[k] < 0) xs[k] += 300; es[k].setAttribute('transform', `translate(${xs[k] + 10},${ys[k]})`); }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+}
+
+function wOhm() {
+  const el = $('#w-ohm'); if (!el) return;
+  const sV = $('#ov', el), sR = $('#or', el), out = $('#oout', el), bar = $('#obar', el);
+  const upd = () => {
+    const V = +sV.value, R = +sR.value, I = V / R;
+    out.innerHTML = `\\(I=\\dfrac{V}{R}=\\dfrac{${fmt(V, 1)}}{${fmt(R, 0)}}=${fmt(I, 3)}\\un{A}\\)`;
+    bar.style.width = Math.min(100, I / 2.4 * 100) + '%';
+    $('#ovl', el).textContent = fmt(V, 1) + ' V'; $('#orl', el).textContent = fmt(R, 0) + ' Ω';
+    tex(out);
+  };
+  sV.oninput = sR.oninput = upd; upd();
+}
+
+function wVI() {
+  const el = $('#w-vi'); if (!el) return;
+  const s = $('#vir', el), cb = $('#vilamp', el), box = $('#viplot', el), out = $('#viout', el);
+  const upd = () => {
+    const R = +s.value; const xe = Math.min(4, 16 / R);
+    const curves = cb.checked ? [{ c: '#148c5a', lab: 'ampolleta', p: Array.from({ length: 25 }, (_, k) => { const x = k * 3.6 / 24; return [x, .24 * x ** 3 + .6 * x]; }) }] : [];
+    box.innerHTML = plot({ w: 250, h: 180, xmax: 4.4, ymax: 17, xt: [[1, '1'], [2, '2'], [3, '3'], [4, '4']], yt: [[4, '4'], [8, '8'], [12, '12'], [16, '16']], xl: 'I (A)', yl: 'V (V)', lines: [{ p: [0, 0, xe, R * xe], c: '#be2828', lab: 'R' }], curves, dash: [[2, 0, 2, 2 * R], [0, 2 * R, 2, 2 * R]].filter(() => 2 * R <= 17) });
+    out.innerHTML = `Pendiente: \\(R=\\dfrac{\\Delta V}{\\Delta I}=${fmt(R, 1)}\\ohm\\). Con \\(I=2\\un{A}\\): \\(V=${fmt(2 * R, 1)}\\un{V}\\).` + (cb.checked ? ' <span class="tag-v">La curva verde no es recta: el filamento no es óhmico.</span>' : '');
+    tex(out);
+  };
+  s.oninput = cb.onchange = upd; upd();
+}
+
+function wRho() {
+  const el = $('#w-rho'); if (!el) return;
+  const m = $('#rm', el), L = $('#rl', el), A = $('#ra', el), out = $('#rout', el);
+  const upd = () => {
+    const rho = +m.value, l = +L.value, a = +A.value, R = rho * l / (a * 1e-6);
+    const [mm, ee] = rho.toExponential(1).split('e');
+    $('#rll', el).textContent = l + ' m';
+    out.innerHTML = `\\(R=\\rho\\dfrac{L}{A}=${mm.replace('.', '{,}')}\\cdot10^{${+ee}}\\cdot\\dfrac{${l}}{${fmt(a, 1)}\\cdot10^{-6}}\\approx\\mathbf{${fmt(R, R < 1 ? 3 : 2)}\\ohm}\\)`;
+    tex(out);
+  };
+  m.onchange = L.oninput = A.onchange = upd; upd();
+}
+
+function wSP() {
+  const el = $('#w-sp'); if (!el) return;
+  const ins = ['spv', 'sp1', 'sp2'].map(i => $('#' + i, el));
+  const fig = $('#spfig', el), tb = $('#sptab', el);
+  let mode = 'serie';
+  $$('.seg button', el).forEach(b => b.onclick = () => { mode = b.dataset.m; $$('.seg button', el).forEach(x => x.classList.toggle('on', x === b)); upd(); });
+  const upd = () => {
+    const [V, R1, R2] = ins.map(i => +i.value);
+    ins.forEach(i => $(`[data-for="${i.id}"]`, el).textContent = i.value + (i.id === 'spv' ? ' V' : ' Ω'));
+    let Req, IT, V1, V2, I1, I2;
+    if (mode === 'serie') { Req = R1 + R2; IT = V / Req; I1 = I2 = IT; V1 = IT * R1; V2 = IT * R2; }
+    else { Req = R1 * R2 / (R1 + R2); IT = V / Req; V1 = V2 = V; I1 = V / R1; I2 = V / R2; }
+    const P1 = V1 * I1, P2 = V2 * I2, mx = Math.max(P1, P2, 1e-9);
+    const g1 = P1 / mx, g2 = P2 / mx;
+    fig.innerHTML = mode === 'serie'
+      ? ckt([['bat', 0, 0, 0, 2.2, V + ' V', 'w'], ['lamp', 0, 2.2, 3, 2.2, `R₁=${R1} Ω`, 'n', { glow: g1 }], ['lamp', 3, 2.2, 3, 0, `R₂=${R2} Ω`, 'e', { glow: g2 }], ['w', 3, 0, 0, 0]], { s: 52 })
+      : ckt([['bat', 0, 0, 0, 2.2, V + ' V', 'w'], ['w', 0, 2.2, 2, 2.2], ['lamp', 2, 2.2, 2, 0, `R₁=${R1} Ω`, 'e', { glow: g1 }], ['w', 2, 0, 0, 0], ['w', 2, 2.2, 4, 2.2], ['lamp', 4, 2.2, 4, 0, `R₂=${R2} Ω`, 'e', { glow: g2 }], ['w', 4, 0, 2, 0], ['dot', 2, 2.2], ['dot', 2, 0]], { s: 52 });
+    tb.innerHTML = `<table class="tb mini"><tr><th></th><th>\\(R_1\\)</th><th>\\(R_2\\)</th><th>Total</th></tr>
+      <tr><td>Resistencia</td><td>${fmt(R1)} Ω</td><td>${fmt(R2)} Ω</td><td><b>\\(R_{eq}=${fmt(Req)}\\ohm\\)</b></td></tr>
+      <tr><td>Corriente</td><td>${fmt(I1)} A</td><td>${fmt(I2)} A</td><td><b>${fmt(IT)} A</b></td></tr>
+      <tr><td>Voltaje</td><td>${fmt(V1)} V</td><td>${fmt(V2)} V</td><td><b>${fmt(V)} V</b></td></tr>
+      <tr><td>Potencia</td><td>${fmt(P1)} W</td><td>${fmt(P2)} W</td><td><b>${fmt(P1 + P2)} W</b></td></tr></table>
+      <p class="small">${mode === 'serie' ? `Misma corriente; el voltaje se reparte: \\(${fmt(V1)}+${fmt(V2)}=${fmt(V)}\\un{V}\\). Brilla más la de <b>mayor</b> resistencia.` : `Mismo voltaje; la corriente se reparte (ley de nodos): \\(${fmt(I1)}+${fmt(I2)}=${fmt(IT)}\\un{A}\\). Brilla más la de <b>menor</b> resistencia.`}</p>`;
+    tex(tb);
+  };
+  ins.forEach(i => i.oninput = upd); upd();
+}
+
+function wBrillo() {
+  const el = $('#w-brillo'); if (!el) return;
+  const cb = $('#bq', el), fig = $('#bfig', el), out = $('#bout', el);
+  const upd = () => {
+    const off = cb.checked; const V = 12, R = 1;
+    let pa, pb, pc;
+    if (!off) { const IT = V / (1.5 * R); pa = IT * IT * R; pb = pc = (IT / 2) ** 2 * R; }
+    else { const IT = V / (2 * R); pa = pc = IT * IT * R; pb = 0; }
+    const mx = 64; // potencia de A con todas encendidas
+    fig.innerHTML = ckt([['bat', 0, 0, 0, 2.2, 'V', 'w'], ['lamp', 0, 2.2, 2.2, 2.2, 'A', 'n', { glow: pa / mx }], ['w', 2.2, 2.2, 2.4, 2.2], ['lamp', 2.4, 2.2, 2.4, 0, 'B', 'w', off ? { off: true } : { glow: pb / mx }], ['w', 2.4, 0, 0, 0], ['w', 2.4, 2.2, 3.8, 2.2], ['lamp', 3.8, 2.2, 3.8, 0, 'C', 'e', { glow: pc / mx }], ['w', 3.8, 0, 2.4, 0], ['dot', 2.4, 2.2], ['dot', 2.4, 0]], { s: 50 });
+    const rel = p => fmt(p / 16, 2);
+    out.innerHTML = off
+      ? `B quemada: A y C quedan en serie, cada una con \\(\\tfrac{V}{2}\\). Potencias relativas — A: <b>${rel(pa)}</b>, C: <b>${rel(pc)}</b> (antes A: 4, C: 1). A brilla <b>menos</b> y C brilla <b>más</b>.`
+      : `\\(I_A=I_T\\), \\(I_B=I_C=\\tfrac{I_T}{2}\\). Potencias relativas (\\(P=I^2R\\)) — A: <b>${rel(pa)}</b>, B: <b>${rel(pb)}</b>, C: <b>${rel(pc)}</b>. A brilla 4 veces más.`;
+    tex(out);
+  };
+  cb.onchange = upd; upd();
+}
+
+function wNodo() {
+  const el = $('#w-nodo'); if (!el) return;
+  const s = ['n1', 'n2', 'n3'].map(i => $('#' + i, el)), fig = $('#nfig', el), out = $('#nout', el);
+  const upd = () => {
+    const [a, b, c] = s.map(x => +x.value); const d = a + b - c;
+    s.forEach(x => $(`[data-for="${x.id}"]`, el).textContent = x.value + ' A');
+    fig.innerHTML = nodeSVG(`I₁=${a} A`, `I₂=${b} A`, `I₃=${c} A`, d, `I₄=${fmt(Math.abs(d), 1)} A`);
+    out.innerHTML = `Entran: \\(${a}+${b}=${a + b}\\un{A}\\). Salen: \\(${c}+I_4\\).<br>\\(I_4=${a + b}-${c}=${d}\\un{A}\\) ` +
+      (d > 0 ? '→ <b>sale</b> del nodo.' : d < 0 ? `→ el signo negativo indica que en realidad <b>entra</b> al nodo (${Math.abs(d)} A).` : '→ por ese conductor no circula corriente.');
+    tex(out);
+  };
+  s.forEach(x => x.oninput = upd); upd();
+}
+
+function wInstr() {
+  const el = $('#w-instr'); if (!el) return;
+  const cb = $('#iq', el), fig = $('#ifig', el), out = $('#iout', el);
+  const upd = () => {
+    const quit = cb.checked; const V = 18, R1 = 4;
+    const Rp = quit ? 6 : 2, IT = V / (R1 + Rp), V1 = IT * R1, Vp = V - V1, I2 = Vp / 6, I3 = quit ? 0 : Vp / 3;
+    const els = [['bat', 0, 0, 0, 3, '18 V', 'w'], ['M', 0, 3, 1.6, 3, '', 'n', {}, 'A₁'], ['R', 1.6, 3, 3.4, 3, 'R₁=4 Ω', 's'], ['w', 3.4, 3, 3.6, 3],
+      ['M', 3.6, 3, 3.6, 1.6, '', 'n', {}, 'A₂'], ['R', 3.6, 1.6, 3.6, 0, '6 Ω', 'w'], ['w', 3.6, 0, 0, 0],
+      ['w', 1.6, 3, 1.6, 3.9], ['M', 1.6, 3.9, 3.4, 3.9, '', 'n', {}, 'V₁'], ['w', 3.4, 3.9, 3.4, 3], ['dot', 1.6, 3], ['dot', 3.4, 3], ['dot', 3.6, 3], ['dot', 3.6, 0]];
+    if (!quit) els.push(['w', 3.6, 3, 5.2, 3], ['M', 5.2, 3, 5.2, 1.6, '', 'n', {}, 'A₃'], ['R', 5.2, 1.6, 5.2, 0, '3 Ω', 'e'], ['w', 5.2, 0, 3.6, 0]);
+    else els.push(['w', 3.6, 3, 4.6, 3], ['open', 4.6, 3, 5.2, 3], ['txt', 5.0, 3.35, 'rama retirada', 'middle']);
+    fig.innerHTML = ckt(els, { s: 46 });
+    const rd = (n, v, u) => `<div class="meter"><span>${n}</span><b>${fmt(v)} ${u}</b></div>`;
+    out.innerHTML = `<div class="meters">${rd('A₁', IT, 'A')}${rd('V₁', V1, 'V')}${rd('A₂', I2, 'A')}${quit ? '' : rd('A₃', I3, 'A')}</div>
+      <p class="small">\\(R_{eq}=4+${quit ? '6' : '\\tfrac{6\\cdot3}{6+3}'}=${fmt(R1 + Rp)}\\ohm\\); \\(I_T=\\tfrac{18}{${fmt(R1 + Rp)}}=${fmt(IT)}\\un{A}\\); al paralelo le quedan \\(18-${fmt(V1)}=${fmt(Vp)}\\un{V}\\).
+      ${quit ? '' : `Nodo: A₁ = A₂ + A₃ → \\(${fmt(IT)}=${fmt(I2)}+${fmt(I3)}\\) ✓`}</p>`;
+    tex(out);
+  };
+  cb.onchange = upd; upd();
+}
+
+function wCfg() {
+  const el = $('#w-cfg'); if (!el) return;
+  const sV = $('#cfv', el), out = $('#cfout', el);
+  const C = [['serie', 'Tres en serie', 3], ['dosPar', 'Dos en paralelo + una en serie', 1.5], ['unaPar', 'Una en paralelo con dos en serie', 2 / 3], ['paralelo', 'Tres en paralelo', 1 / 3]];
+  const upd = () => {
+    const V = +sV.value, R = 6; $('[data-for="cfv"]', el).textContent = V + ' V';
+    const Ps = C.map(c => V * V / (c[2] * R)), mx = Math.max(...Ps);
+    out.innerHTML = C.map((c, k) => `<div class="cfrow"><div class="cfsvg">${cfgSVG(c[0])}</div><div class="cfinfo"><b>${c[1]}</b><br>\\(R_{eq}=${['3R', '\\tfrac{3}{2}R', '\\tfrac{2}{3}R', '\\tfrac{1}{3}R'][k]}=${fmt(c[2] * R)}\\ohm\\)
+      <div class="bar"><i style="width:${Ps[k] / mx * 100}%"></i></div><span class="small">\\(P_T=\\dfrac{V^2}{R_{eq}}=${fmt(Ps[k], 1)}\\un{W}\\)</span></div></div>`).join('') +
+      `<p class="small">Con ampolletas de \\(R=6\\ohm\\). El paralelo disipa \\(${fmt(Ps[3] / Ps[0], 0)}\\) veces la potencia de la serie, para cualquier voltaje.</p>`;
+    tex(out);
+  };
+  sV.oninput = upd; upd();
+}
+
+function wEnergia() {
+  const el = $('#w-energia'); if (!el) return;
+  const rows = [['Ampolleta LED', 10, 5], ['Televisor', 120, 4], ['Refrigerador', 150, 8], ['Hervidor', 2000, .25], ['Plancha', 1200, .5], ['Computador', 200, 3]];
+  const tb = $('#etab', el), price = $('#eprice', el), days = $('#edays', el), out = $('#eout', el);
+  tb.innerHTML = `<tr><th>Artefacto</th><th>P (W)</th><th>h/día</th><th>kWh/mes</th><th>Costo</th><th></th></tr>` + rows.map((r, i) =>
+    `<tr><td>${r[0]}</td><td><input type="number" min="0" value="${r[1]}" data-i="${i}" data-k="p"></td><td><input type="number" min="0" step="0.25" value="${r[2]}" data-i="${i}" data-k="h"></td><td class="kwh"></td><td class="cost"></td><td class="bcell"><div class="bar"><i></i></div></td></tr>`).join('');
+  const upd = () => {
+    const pr = +price.value, d = +days.value; let tot = 0, tc = 0;
+    const ins = $$('input', tb); const E = rows.map((_, i) => { const p = +ins[2 * i].value, h = +ins[2 * i + 1].value; return p / 1000 * h * d; });
+    const mx = Math.max(...E, 1e-9);
+    $$('tr', tb).slice(1).forEach((tr, i) => { $('.kwh', tr).textContent = fmt(E[i], 2); $('.cost', tr).textContent = '$' + fmt(E[i] * pr, 0); $('.bar i', tr).style.width = E[i] / mx * 100 + '%'; tot += E[i]; tc += E[i] * pr; });
+    out.innerHTML = `Total: <b>${fmt(tot, 1)} kWh</b> en ${d} días → <b>$${fmt(tc, 0)}</b>. <span class="small">Fíjate: el hervidor tiene la mayor potencia, pero no necesariamente el mayor consumo.</span>`;
+  };
+  el.oninput = upd; upd();
+}
+
+function wEf() {
+  const el = $('#w-ef'); if (!el) return;
+  const sP = $('#efp', el), sU = $('#efu', el), out = $('#efout', el), fig = $('#effig', el);
+  const upd = () => {
+    const P = +sP.value, u = +sU.value / 100, Pu = P * u, Pl = P - Pu;
+    $('[data-for="efp"]', el).textContent = P + ' W'; $('[data-for="efu"]', el).textContent = Math.round(u * 100) + ' %';
+    const H = 70, hu = Math.max(2, H * u), hl = H - hu;
+    fig.innerHTML = `<svg viewBox="0 0 330 130" width="330" height="130"><rect x="4" y="20" width="66" height="${H}" fill="#c3d0ee"/>
+      <text x="37" y="52" text-anchor="middle" class="tk">Consumida</text><text x="37" y="66" text-anchor="middle" class="tk">${fmt(P, 0)} W</text>
+      <path d="M70,20 L230,20 L230,${20 + hu} L70,${20 + hu} Z" fill="#e6b84f"/>
+      <path d="M70,${20 + hu} L150,${20 + hu} C190,${20 + hu} 200,${100} 230,${110} L230,${110 + hl} C190,${110 + hl} 170,${20 + H} 150,${20 + H} L70,${20 + H} Z" fill="#e7a1a1"/>
+      <text x="236" y="${24 + hu / 2}" class="tk">útil: ${fmt(Pu, 1)} W</text><text x="236" y="${114 + hl / 2}" class="tk">calor: ${fmt(Pl, 1)} W</text></svg>`;
+    out.innerHTML = `\\(\\eta=\\dfrac{${fmt(Pu, 1)}}{${fmt(P, 0)}}\\cdot100\\%=${fmt(u * 100, 0)}\\%\\). Los \\(${fmt(Pl, 1)}\\un{W}\\) restantes no se destruyen: se transforman en calor.`;
+    tex(out);
+  };
+  sP.oninput = sU.oninput = upd; upd();
+}
+
+function wAuto() {
+  const el = $('#w-auto'); if (!el) return;
+  const ap = [['Hervidor', 2000], ['Plancha', 1200], ['Microondas', 1100], ['Estufa', 2000], ['Televisor', 120], ['Refrigerador', 150], ['Notebook', 65], ['5 ampolletas LED', 50]];
+  const list = $('#alist', el), sel = $('#abrk', el), out = $('#aout', el);
+  list.innerHTML = ap.map((a, i) => `<label class="chk"><input type="checkbox" data-p="${a[1]}" ${i === 4 || i === 5 ? 'checked' : ''}> ${a[0]} <span class="small">(${fmt(a[1], 0)} W)</span></label>`).join('');
+  const upd = () => {
+    const P = $$('input', list).filter(x => x.checked).reduce((s, x) => s + +x.dataset.p, 0), Imax = +sel.value, I = P / 220, pm = 220 * Imax;
+    const trip = I > Imax;
+    out.innerHTML = `<div class="gauge"><i style="width:${Math.min(100, I / Imax * 100)}%" class="${trip ? 'bad' : I > .8 * Imax ? 'warn' : 'ok'}"></i></div>
+      \\(P_T=${fmt(P, 0)}\\un{W}\\Rightarrow I_T=\\dfrac{${fmt(P, 0)}}{220}=${fmt(I, 1)}\\un{A}\\) &nbsp;|&nbsp; Límite: \\(220\\cdot${Imax}=${fmt(pm, 0)}\\un{W}\\)<br>
+      <b class="${trip ? 'txt-bad' : 'txt-ok'}">${trip ? '⚡ ¡Salta el automático! Hay sobrecarga.' : '✓ El automático no salta.'}</b>`;
+    tex(out);
+  };
+  list.onchange = sel.onchange = upd; upd();
+}
+
+function wClasif() {
+  const el = $('#w-clasif'); if (!el) return;
+  const items = [
+    ['¿Cómo influye la longitud de un alambre en su resistencia?', 'Pregunta'],
+    ['A mayor temperatura del filamento, mayor es su resistencia.', 'Hipótesis'],
+    ['Si se duplica el voltaje aplicado al resistor, la corriente se duplicará.', 'Predicción'],
+    ['Los cargadores baratos son los peores.', 'Opinión'],
+    ['La corriente medida fue de 0,4 A con 6 V.', 'Resultado'],
+    ['La resistencia es directamente proporcional a la longitud: se acepta la hipótesis.', 'Conclusión']];
+  const opts = ['Pregunta', 'Hipótesis', 'Predicción', 'Resultado', 'Conclusión', 'Opinión'];
+  el.querySelector('.cl-list').innerHTML = items.map((it, i) => `<div class="cl-it" data-a="${it[1]}"><div>“${it[0]}”</div><div class="cl-op">${opts.map(o => `<button class="chip" data-o="${o}">${o}</button>`).join('')}</div><div class="cl-fb small"></div></div>`).join('');
+  $$('.cl-it', el).forEach(it => $$('.chip', it).forEach(b => b.onclick = () => {
+    const ok = b.dataset.o === it.dataset.a;
+    $$('.chip', it).forEach(x => x.classList.remove('good', 'bad')); b.classList.add(ok ? 'good' : 'bad');
+    $('.cl-fb', it).innerHTML = ok ? '✓ Correcto.' : '✗ Revisa: ' + ({ Pregunta: 'termina en signo de interrogación y se responde con datos.', Hipótesis: 'es una afirmación tentativa que explica y se pone a prueba.', Predicción: 'anticipa un resultado concreto (si… entonces…).', Opinión: 'es un juicio de valor: no se puede poner a prueba.', Resultado: 'es un dato obtenido al medir.', Conclusión: 'interpreta los resultados y responde la pregunta/hipótesis.' })[it.dataset.a];
+  }));
+}
+
+function examples() {
+  $$('.ejemplo').forEach(ex => {
+    const steps = JSON.parse(ex.dataset.steps), ans = ex.dataset.ans;
+    $$('.ealt', ex).forEach(b => b.onclick = () => {
+      $$('.ealt', ex).forEach(x => x.classList.remove('good', 'bad'));
+      b.classList.add(b.dataset.l === ans ? 'good' : 'bad');
+    });
+    stepper($('.stp', ex), steps);
+  });
+  $$('.mini-stepper').forEach(ms => stepper(ms, JSON.parse(ms.dataset.steps)));
+}
+
+/* ===================== EJERCITACIÓN ===================== */
+const FIG = {
+  4: () => ckt([['bat', 0, 0, 0, 2.2], ['M', 0, 2.2, 2.2, 2.2, '', 'n', {}, 'X'], ['w', 2.2, 2.2, 2.6, 2.2], ['R', 2.6, 2.2, 2.6, 0, 'R', 'w'], ['w', 2.6, 0, 0, 0], ['w', 2.6, 2.2, 3.8, 2.2], ['M', 3.8, 2.2, 3.8, 0, '', 'n', {}, 'Y'], ['w', 3.8, 0, 2.6, 0], ['dot', 2.6, 2.2], ['dot', 2.6, 0]], { s: 40 }),
+  6: () => plot({ xmax: 5, ymax: 3.4, xt: [[2, '2'], [4, '4']], yt: [[1, '1'], [2, '2'], [3, '3']], xl: 't (s)', yl: 'Q (C)', lines: [{ p: [0, 0, 4.6, 2.3], c: '#be2828' }], dash: [[4, 0, 4, 2], [0, 2, 4, 2]] }),
+  8: () => plot({ xmax: 5, ymax: 9.6, xt: [[1, '1'], [2, '2'], [3, '3'], [4, '4']], yt: [[4, '4'], [8, '8']], xl: 'I (A)', yl: 'V (V)', lines: [{ p: [0, 0, 2.3, 9.2], c: '#be2828', lab: 'A' }, { p: [0, 0, 4.5, 9], c: '#1e50b4', lab: 'B' }], dash: [[2, 0, 2, 8], [2, 8, 4, 8], [4, 8, 4, 0], [0, 8, 2, 8]] }),
+  13: () => ckt([['bat', 0, 0, 0, 2.4, '24 V', 'w'], ['R', 0, 2.4, 2.4, 2.4, '2 Ω', 'n'], ['R', 2.4, 2.4, 2.4, 0, '4 Ω', 'e'], ['R', 2.4, 0, 0, 0, '6 Ω', 's']], { s: 40 }),
+  14: () => ckt([['bat', 0, 0, 0, 2.4, '12 V', 'w'], ['w', 0, 2.4, 1.8, 2.4], ['R', 1.8, 2.4, 1.8, 0, '6 Ω', 'w'], ['w', 1.8, 0, 0, 0], ['w', 1.8, 2.4, 3.4, 2.4], ['R', 3.4, 2.4, 3.4, 0, '3 Ω', 'e'], ['w', 3.4, 0, 1.8, 0], ['dot', 1.8, 2.4], ['dot', 1.8, 0]], { s: 40 }),
+  15: () => ckt([['bat', 0, 0, 0, 2.6, '24 V', 'w'], ['R', 0, 2.6, 2.2, 2.6, '4 Ω', 'n'], ['w', 2.2, 2.6, 2.4, 2.6], ['R', 2.4, 2.6, 2.4, 0, '6 Ω', 'w'], ['w', 2.4, 0, 0, 0], ['w', 2.4, 2.6, 4, 2.6], ['R', 4, 2.6, 4, 0, '12 Ω', 'e'], ['w', 4, 0, 2.4, 0], ['dot', 2.4, 2.6], ['dot', 2.4, 0]], { s: 40 }),
+  37: () => plot({ w: 240, xmax: 95, ymin: 9.5, ymax: 12.4, xt: [[20, '20'], [40, '40'], [60, '60'], [80, '80']], yt: [[10, '10'], [11, '11'], [12, '12']], xl: 'T (°C)', yl: 'R (Ω)', lines: [{ p: [12, 9.8, 92, 11.8], c: '#be2828' }], pts: [[20, 10], [40, 10.5], [60, 11], [80, 11.5]] }),
+  43: () => nodeSVG('4 A', '3 A', '2 A', null, 'I'),
+  44: () => ckt([['bat', 0, 0, 0, 2.8, '12 V', 'w'], ['M', 0, 2.8, 2.2, 2.8, '', 'n', {}, 'A₁'], ['w', 2.2, 2.8, 2.4, 2.8], ['M', 2.4, 2.8, 2.4, 1.4, '', 'n', {}, 'A₂'], ['R', 2.4, 1.4, 2.4, 0, '6 Ω', 'w'], ['w', 2.4, 0, 0, 0], ['w', 2.4, 2.8, 4, 2.8], ['R', 4, 2.8, 4, 0, '3 Ω', 'e'], ['w', 4, 0, 2.4, 0], ['dot', 2.4, 2.8], ['dot', 2.4, 0]], { s: 40 }),
+  45: () => ckt([['bat', 0, 0, 0, 2.8, 'V', 'w'], ['M', 0, 2.8, 1.8, 2.8, '', 'n', {}, 'A'], ['R', 1.8, 2.8, 3.4, 2.8, 'R₁', 'n'], ['w', 3.4, 2.8, 3.6, 2.8], ['R', 3.6, 2.8, 3.6, 0, 'R₂', 'w'], ['w', 3.6, 0, 0, 0], ['w', 3.6, 2.8, 5.2, 2.8], ['sw', 5.2, 2.8, 5.2, 1.4, 'S', 'e'], ['R', 5.2, 1.4, 5.2, 0, 'R₃', 'e'], ['w', 5.2, 0, 3.6, 0], ['dot', 3.6, 2.8], ['dot', 3.6, 0]], { s: 40 }),
+  47: () => ckt([['bat', 0, 0, 0, 2.4, '12 V', 'w'], ['lamp', 0, 2.4, 1.8, 2.4], ['w', 1.8, 2.4, 2, 2.4], ['lamp', 2, 2.4, 2, 0], ['w', 2, 0, 0, 0], ['w', 2, 2.4, 3.3, 2.4], ['lamp', 3.3, 2.4, 3.3, 0], ['w', 3.3, 0, 2, 0], ['w', 3.3, 2.4, 4.6, 2.4], ['M', 4.6, 2.4, 4.6, 0, '', 'n', {}, 'V'], ['w', 4.6, 0, 3.3, 0], ['dot', 2, 2.4], ['dot', 2, 0], ['dot', 3.3, 2.4], ['dot', 3.3, 0]], { s: 40 }),
+};
+const ALT46 = ['serie', 'dosPar', 'paralelo', 'unaPar'];
+
+const CAT = [
+  ['Corriente como flujo de cargas', [1, 2, 3, 5, 6]],
+  ['Ley de Ohm y circuitos (serie, paralelo, mixtos)', [4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]],
+  ['Potencia y energía en circuitos de CC', [19, 20, 21, 24]],
+  ['Consumo y eficiencia en artefactos', [22, 23, 25, 41]],
+  ['Instalación eléctrica domiciliaria', [26, 27, 28, 29, 30]],
+  ['Ley de nodos, instrumentos y configuraciones', [43, 44, 45, 46, 47, 48]],
+  ['Habilidades: plantear preguntas y planificar', [31, 32, 33, 34, 35, 36]],
+  ['Habilidades: procesar, evaluar y comunicar', [37, 38, 39, 40, 42]],
+];
+
+let RESP = store.get('elec27-resp', {});
+function renderEx() {
+  const byN = Object.fromEntries(EX.map(q => [q.n, q]));
+  $$('.ex-slot').forEach(slot => {
+    const nums = slot.dataset.q.split(',').map(Number);
+    slot.innerHTML = nums.map(n => {
+      const q = byN[n];
+      const fig = FIG[n] ? `<div class="qfig">${FIG[n]()}</div>` : '';
+      const afirm = q.afirm ? `<table class="afirm">${q.afirm.map((a, i) => `<tr><td>${['I)', 'II)', 'III)'][i]}</td><td>${a}</td></tr>`).join('')}</table>` : '';
+      const alts = n === 46
+        ? `<div class="alts cfgalts">${'ABCD'.split('').map((l, i) => `<button class="alt" data-l="${l}"><b>${l})</b>${cfgSVG(ALT46[i])}</button>`).join('')}</div>`
+        : `<div class="alts ${q.kind === 'alts' ? 'two' : ''}">${q.alts.map((a, i) => `<button class="alt" data-l="${'ABCD'[i]}"><b>${'ABCD'[i]})</b><span>${a}</span></button>`).join('')}</div>`;
+      return `<div class="caja q" id="q${n}" data-n="${n}"><span class="badge">${n}</span><div class="hab"><span class="habtag">${q.hab}</span></div>
+        <div class="qrow"><div class="qstem">${q.stem}</div>${fig}</div>${afirm}${alts}
+        <div class="fb"></div>
+        <button class="btn sol-toggle">Ver resolución paso a paso</button><div class="sol" hidden></div></div>`;
+    }).join('');
+  });
+  $$('.caja.q').forEach(c => {
+    const n = +c.dataset.n, q = byN[n];
+    const pick = (l, save = true) => {
+      $$('.alt', c).forEach(b => { b.classList.remove('good', 'bad', 'sel'); if (b.dataset.l === q.ans && l) b.classList.add('good'); });
+      const b = $(`.alt[data-l="${l}"]`, c); if (!b) return;
+      b.classList.add('sel'); if (l !== q.ans) b.classList.add('bad');
+      const fb = $('.fb', c);
+      fb.className = 'fb ' + (l === q.ans ? 'ok' : 'no');
+      fb.innerHTML = l === q.ans ? `<b>¡Correcto! Alternativa ${q.ans}.</b> Revisa la resolución para confirmar tu razonamiento.` : `<b>Incorrecto.</b> ${(q.fb && q.fb[l]) || ''} La respuesta correcta es <b>${q.ans}</b>.`;
+      tex(fb);
+      if (save) { RESP[n] = l; store.set('elec27-resp', RESP); score(); }
+    };
+    $$('.alt', c).forEach(b => b.onclick = () => pick(b.dataset.l));
+    const sol = $('.sol', c), tg = $('.sol-toggle', c); let built = false;
+    tg.onclick = () => { if (!built) { stepper(sol, q.steps); built = true; } sol.hidden = !sol.hidden; tg.textContent = sol.hidden ? 'Ver resolución paso a paso' : 'Ocultar resolución'; };
+    if (RESP[n]) pick(RESP[n], false);
+  });
+  tex($('#ejercitacion'));
+  score();
+}
+function score() {
+  const byN = Object.fromEntries(EX.map(q => [q.n, q]));
+  const ans = Object.keys(RESP).length, ok = Object.entries(RESP).filter(([n, l]) => byN[n] && byN[n].ans === l).length;
+  $('#sc-ok').textContent = ok; $('#sc-ans').textContent = ans;
+  $('#sc-bar').style.width = ans / 48 * 100 + '%';
+  const tb = $('#spec');
+  if (tb) tb.innerHTML = `<tr><th>Contenido / habilidad</th><th>Preguntas</th><th>Mis aciertos</th></tr>` + CAT.map(([t, qs]) => {
+    const k = qs.filter(n => RESP[n] && RESP[n] === byN[n].ans).length;
+    return `<tr><td><b>${t}</b></td><td>${qs.map(n => `<a href="#q${n}" class="${RESP[n] ? (RESP[n] === byN[n].ans ? 'qok' : 'qno') : ''}">${n}</a>`).join(' ')}</td><td class="c"><b>${k}</b>/${qs.length}</td></tr>`;
+  }).join('');
+  const key = $('#clave');
+  if (key && !key.dataset.done) { key.innerHTML = EX.map(q => `<span><a href="#q${q.n}">${q.n}</a> ${q.ans}</span>`).join(''); key.dataset.done = 1; }
+}
+
+/* ===================== inicio ===================== */
+document.addEventListener('DOMContentLoaded', () => {
+  renderEx();
+  [wCorriente, wOhm, wVI, wRho, wSP, wBrillo, wNodo, wInstr, wCfg, wEnergia, wEf, wAuto, wClasif, examples].forEach(f => { try { f(); } catch (e) { console.error(f.name, e); } });
+  $$('.static-ckt').forEach(d => d.innerHTML = ckt(JSON.parse(d.dataset.ckt), { s: +(d.dataset.s || 44) }));
+  $$('.static-cfg').forEach(d => d.innerHTML = cfgSVG(d.dataset.k));
+  tex(document.body);
+  $('#reset').onclick = () => { RESP = {}; store.set('elec27-resp', RESP); renderEx(); };
+  $('#clave-btn').onclick = () => { const k = $('#clave'); k.hidden = !k.hidden; };
+  const qr = $('#qr');
+  if (window.QRCode && qr) new QRCode(qr, { text: qr.dataset.url, width: 112, height: 112, correctLevel: QRCode.CorrectLevel.M });
+});
+</script>
+</body>
+</html>
